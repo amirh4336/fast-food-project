@@ -1,6 +1,6 @@
 // Components
 import TabFoods from "./TabFoods";
-import ItemsFood from './ItemsFood';
+import ItemsFood from "./ItemsFood";
 
 export default function List() {
     
