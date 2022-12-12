@@ -1,11 +1,11 @@
 import Header from './Header/Header';
-import List from './Menu/List';
+import Menu from './Menu/Menu';
 
 function App() {
   return (
-    <main className="bg-slate-200 min-h-screen font-['Vazir']" >
+    <main className="min-h-screen font-['Vazir']" >
       <Header />
-      <List />
+      <Menu />
     </main>
   );
 }
