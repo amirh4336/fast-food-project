@@ -7,7 +7,8 @@ export default function List() {
     return(
         <>
             <TabFoods />
-            <div className="List px-6 py-10 flex flex-col space-y-10 ">
+            <div className="List px-6 py-10 flex flex-col space-y-28 ">
+                <ItemsFood />
                 <ItemsFood />
             </div>
         </>

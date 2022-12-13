@@ -17,12 +17,12 @@ export default function ItemsFood() {
                         </div>
                     </div>
                     <div className="card-body p-5 rounded-[15px] pt-8">
-                        <div className="flex flex-wrap justify-center">
+                        <div className="flex flex-wrap justify-end">
                             <h2 className="text-2xl">کوکتل گوشت</h2>
-                            <div className="text-3xl rounded-b-md w-full py-3 text-gray-800 shadow-md flex justify-center">48,000 T</div>
                         </div>
                     </div>
                     <div className="card-footer">
+                            <div className="text-3xl rounded-b-md w-full pb-3 px-5 text-gray-800 shadow-md flex justify-start">48,000 T</div>
                     </div>
                 </div>
     )
