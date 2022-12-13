@@ -9,7 +9,6 @@ export default function List() {
             <TabFoods />
             <div className="List px-6 py-10 flex flex-col space-y-10 ">
                 <ItemsFood />
-                <ItemsFood />
             </div>
         </>
     )
