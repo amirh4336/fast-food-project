@@ -14,7 +14,7 @@ export default function Header() {
                 </button>
             </div>
             <div className="col-span-6 text-4xl flex justify-center">
-                فرحزاد
+                FARAHAZAD
             </div>
             <div className="col-span-3 flex justify-end">
                 <button type="button" className="text-xs w-12 h-12 bg-rose-500 text-white p-2 py-1 rounded-full">

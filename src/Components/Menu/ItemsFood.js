@@ -11,16 +11,16 @@ import sandwichKok from './../../Assets/Images/sandwich-kok.jpg';
 export default function ItemsFood() {
 
     return(
-        <div className="card bg-white relative z-10 text-black rounded-md text-center mb-5 ring-rose-500  ring-4">
+        <div className="card bg-white relative z-10 text-black rounded-[20px] text-center mb-5 ring-rose-500  ring-4">
                     <div className="card-header">
-                        <div className=" absolute text-xl inset-x-0 top-0 -mt-4 text-white bg-rose-500 max-w-[14rem] mx-auto p-1 rounded-xl flex justify-around">
+                        <div className=" absolute text-xl inset-x-0 top-0 -mt-4 text-white bg-rose-500 max-w-[11rem] mx-auto p-1 rounded-lg flex justify-around">
                             <img className='w-4 text-white' src={foodSvg} alt="foodSvg" />
-                            <p className="">ساندویچ کوکتل گوشت </p>
+                            <p className="">کوکتل گوشت</p>
                             <img className='w-4 text-white' src={foodSvg} alt="foodSvg" />
                         </div>
-                        <img className="w-full rounded-t-md text-white" src={sandwichKok} alt="sandwichKok" />
+                        <img className="w-full bg-center rounded-t-[20px] text-white" src={sandwichKok} alt="sandwichKok" />
                     </div>
-                    <div className="card-body p-5 rounded-md bg-zinc-50">
+                    <div className="card-body p-5 rounded-xl bg-zinc-50">
                         <div className="flex flex-wrap justify-end">
                             <div className="flex items-center mb-3 ">
                                 <p className="ml-2 text-sm sm:text-lg text-slate-500 font-normal">کوکتل به مقدار کافی</p>
@@ -61,7 +61,7 @@ export default function ItemsFood() {
                         </div>
                     </div>
                     <div className="card-footer">
-                        <div className="text-3xl bg-rose-500 rounded-b-md w-full py-3  text-white shadow-md flex justify-center"><span className="mr-2">هزار تومان</span><span>۴۸</span></div>
+                        <div className="text-3xl bg-rose-500 rounded-b-[20px] w-full py-3  text-white shadow-md flex justify-center"><span className="mr-2">هزار تومان</span><span>۴۸</span></div>
                     </div>
                 </div>
     )
