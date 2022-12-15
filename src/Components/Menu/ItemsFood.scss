@@ -30,21 +30,29 @@
 
 @keyframes flip {
     0% {
+        z-index: 11;
         transform: rotateX(0); 
     }
     33% {
-        transform: translateY(-8rem);
+        z-index: 11;
+        transform: translateY(-10rem);
     }
     66% {
-        transform: translateY(-8rem) rotateX(.5turn); 
+        z-index: 11;
+        transform: translateY(-10rem) rotateX(.5turn); 
+    }
+    99% {
+        z-index: 1;
+        transform: rotateX(.5turn) translateY(0); 
     }
     100% {
+        z-index: 1;
         transform: rotateX(.5turn) translateY(0); 
     }
 }
 
 .flip {
-    animation: flip 4s linear forwards ;
+    animation: flip 3s linear forwards ;
 }
 
 @keyframes reverse-flip {
@@ -52,16 +60,18 @@
         transform: rotateX(.5turn) translateY(0); 
     }
     33% {
-        transform: translateY(-8rem) rotateX(.5turn); 
+        transform: translateY(-10rem) rotateX(.5turn); 
     }
     66% {
-        transform: translateY(-8rem);
+        
+        transform: translateY(-10rem);
     }
     100% {
+        z-index: 11;
         transform: rotateX(0); 
     }
 }
 
 .reverse-flip {
-    animation: reverse-flip 4s linear forwards ;
+    animation: reverse-flip 3s linear forwards ;
 }
