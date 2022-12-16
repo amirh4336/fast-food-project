@@ -1,13 +1,19 @@
+import { useContext } from 'react';
+
+// context
+import Context from '../../Context/Context';    
+
 // svg
-// import logoSvg from './../../Assets/Logos/food-svgrepo-com.svg';
 import sunSvg from './../../Assets/Logos/sun.svg';
 
 
 export default function Header() {
     
+    const { headerState } = useContext(Context);
+
 
     return (
-        <div className="grid grid-cols-12 bg-white fixed w-full top-0 z-40 items-center justify-between py-4 px-4 shadow-sm">
+        <div className={`grid grid-cols-12 bg-white fixed w-full top-0 z-40 items-center justify-between py-4 px-4 shadow-sm transition-all duration-300  ${ headerState ? 'delay-300' : ' -translate-y-20 delay-100'}`}>
             <div className="col-span-3 flex justify-start">
                 <button type="button" className="text-xs w-12 h-12 bg-gray-500 text-white p-2 py-1 rounded-full">
                     <img className='w-12 text-white' src={sunSvg} alt="Your SVG" />
