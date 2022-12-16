@@ -4,7 +4,7 @@ import Footer from './Footer/Footer';
 
 function App() {
   return (
-    <main className="min-h-screen font-['Vazir'] bg-slate-800" >
+    <main className="min-h-screen font-['Vazir'] " >
       <Header />
       <Menu />
       <Footer />

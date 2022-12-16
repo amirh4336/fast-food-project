@@ -7,7 +7,7 @@ export default function Header() {
     
 
     return (
-        <div className="grid grid-cols-12 bg-white items-center justify-between py-4 px-4 shadow-sm">
+        <div className="grid grid-cols-12 bg-white fixed w-full top-0 z-40 items-center justify-between py-4 px-4 shadow-sm">
             <div className="col-span-3 flex justify-start">
                 <button type="button" className="text-xs w-12 h-12 bg-gray-500 text-white p-2 py-1 rounded-full">
                     <img className='w-12 text-white' src={sunSvg} alt="Your SVG" />

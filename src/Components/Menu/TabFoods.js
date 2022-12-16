@@ -3,7 +3,7 @@
 export default function TabFoods() {
     
     return(
-        <div className="grid grid-cols-3 gap-5 p-3 text-white text-xl shadow-lg">
+        <div className="grid grid-cols-3 gap-5 fixed w-full bg-white top-20 z-30 p-3 text-white text-xl shadow-lg">
             <div className="rounded-lg shadow-sm h-20 bg-cover bg-center  bg-pizza-image">
                 <button className="col-span-1 rounded-lg py-4 w-full h-full bg-gradient-to-r from-[#000000aa] to-[#0000001c]">پیتزا</button>
             </div>
