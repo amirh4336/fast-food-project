@@ -7,7 +7,7 @@ export default function List() {
     return(
         <>
             <TabFoods />
-            <div className="List px-6 py-10 flex flex-col mt-[18rem]">
+            <div className="List px-6 py-10 flex flex-col mt-[10rem]">
                 <ItemsFood />
                 <ItemsFood />
                 <ItemsFood />
