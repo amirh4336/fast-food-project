@@ -17,15 +17,15 @@ export default function ItemsFood() {
     let rotate = e => setState(! state)
     return(
         <div className="card relative mt-[6rem] mb-[10rem]">
-            <div className={`card-header w-full relative transform-style h-[9rem] flex justify-center  ${state ? ' flip' : 'reverse-flip'}`} onClick={rotate}>
-                <div className={`card-header-front absolute transform-style w-[95%] h-[14.5rem] bottom-[-1rem] backface bg-center bg-cover bg-burger-image rounded-[15px] `}>
+            <div className={`card-header w-full relative transform-style h-[9rem] flex justify-center z-10 ${state ? 'flip' : 'reverse-flip'}`} onClick={rotate}>
+                <div className={`card-header-front absolute transform-style w-[95%] h-[14.5rem] bottom-[-1rem] backface bg-center bg-cover bg-burger-image rounded-[15px] shadow-sm flex flex-col-reverse`}>
                 </div>
-                <div className={`card-header-back absolute transform-style rotate-x w-[95%] h-[14.5rem] backface bg-slate-400 rounded-[15px]`}>
-                    <h5 className="text-black mt-7 text-4xl">Farahzad</h5>
+                <div className={`card-header-back absolute transform-style rotate-y w-[95%] h-[14.5rem] bottom-[-1rem] backface bg-slate-100 rounded-[15px] text-center shadow-sm`}>
+                    <h5 className="text-blue-700 mt-7 text-5xl translate-z">Farahzad</h5>
                 </div>
             </div>
-            <div className="card-main w-full z-10 absolute top-0 bg-white text-black rounded-[15px] text-center border-2 "> 
-                <div className="card-body p-5 rounded-[15px] pt-[10rem]">
+            <div className="card-main w-full absolute top-0 bg-white text-black rounded-[15px] text-center border-2 "> 
+                <div className="card-body p-5 rounded-[15px] pt-[11rem]">
                     <div className="flex flex-wrap justify-end">
                         <h2 className="text-2xl">کوکتل گوشت</h2>
                     </div>
