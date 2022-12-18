@@ -50,7 +50,7 @@
 }
 
 .flip {
-    animation: flip .8s linear forwards ;
+    animation: flip .75s linear forwards ;
 }
 
 @keyframes reverse-flip {
@@ -66,5 +66,5 @@
 }
 
 .reverse-flip {
-    animation: reverse-flip .8s linear forwards ;
+    animation: reverse-flip .75s linear forwards ;
 }
