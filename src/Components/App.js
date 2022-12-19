@@ -56,13 +56,30 @@ function App() {
       {id: 2 , name:"سالاد سزار" , price:"120,000T" , picture:"bg-salad-sezar-image"},
       {id: 3 , name:"سالاد کلم" , price:"35,000T" , picture:"bg-salad-kalam-image"},
     ],
-    listDrinks : "",
+    listDrinks : [],
     listFried : [
       {id: 1 , name:"سیب زمینی" , price:"50,000T" , picture:"bg-sib-zamini-image"},
       {id: 2 , name:"سیب زمینی ویژه" , price:"87,000T" , picture:"bg-sib-zamini-vizhe-image"},
       {id: 3 , name:"قارچ سوخاری" , price:"T" , picture:"bg-gharch-sokhari-image"},
       {id: 4 , name:"کنتاکی" , price:"T" , picture:"bg-kentaki-image"},
     ],
+    listCurrent : [ 
+      // italy
+      {id: 1 , name:"مخصوص ایتالیایی" , price:"170,000T" , picture:"bg-makhsose-italy-image"},
+      {id: 2 , name:"گوشت و قارچ ایتالیایی" , price:"210,000T" , picture:"bg-ghost-va-gharch-italy-image"},
+      // {id: 3 , name:"رست چیکن ایتالیایی" , price:"197,000T" , picture:"bg-bandari-image"},
+      {id: 4 , name:"رست بیف ایتالیایی" , price:"217,000T" , picture:"bg-roast-beef-italy-image"},
+      {id: 5 , name:" چیکن ایتالیایی" , price:"210,000T" , picture:"bg-chicken-italy-image"},
+      // {id: 6 , name:"سبزیجات ایتالیایی" , price:"168,000T" , picture:"bg-hotdog-royal-image"},
+      {id: 7 , name:"پپرونی ایتالیایی" , price:"183,000T" , picture:"bg-peproni-italy-image"},
+      // american
+      {id: 8 , name:" مینی مخصوص" , price:"63,000T" , picture:"bg-mini-makhsose-image"},
+      {id: 9 , name:"مخصوص" , price:"87,000T" , picture:"bg-makhsose-image"},
+      {id: 10 , name:"گوشت و قارچ" , price:"113,000T" , picture:"bg-gosht-va-gharch-image"},
+      {id: 11 , name:"رست بیف" , price:"117,000T" , picture:"bg-roast-beef-image"},
+      {id: 12 , name:"چیکن" , price:"105,000T" , picture:"bg-chicken-image"},
+      {id: 13 , name:"پپرونی" , price:"97,000T" , picture:"bg-peproni-image"},
+    ]
   });
   
   const headerState = useToggleHeader();
@@ -71,11 +88,13 @@ function App() {
   return (
     <main className="min-h-screen font-['Vazir'] " >
       <Context.Provider  value={{
+        listCurrent : state.listCurrent,
         listBurger : state.listBurger,
         listSandwich : state.listSandwich,
         listPizza : state.listPizza,
         listApetizer : state.listApetizer,
         listFried : state.listFried,
+        listCst : state.listCst,
         headerState : headerState ,
         dispatch
       }}>
