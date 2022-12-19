@@ -18,8 +18,11 @@ import Footer from './Footer/Footer';
 function App() {
 
   const [state , dispatch] = useReducer(Reducer , {
-    listBurger : "",
-    listsandwich : "",
+    listBurger : [ 
+                  {id: 1 , name:"کوکتل گوشت" , price:"48,000T" , picture:"bg-coketel-image"},
+                  {id: 2 , name:"کوکتل ویژه" , price:"63,000T" , picture:"bg-coketel-image"},
+    ],
+    listSandwich : "",
     listPizza : "",
     listApetizer : "",
     listDrinks : "",
