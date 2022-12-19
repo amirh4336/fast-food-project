@@ -1,68 +1,36 @@
+import {useState} from 'react';
+
+// Style
+import './ItemsFood.scss';
 
 
-// Svg
-import foodSvg from './../../Assets/Logos/fast-food-svgrepo-com (2).svg';
 
+export default function ItemsFood({ItemsFood}) {
 
-// images
-import sandwichKok from './../../Assets/Images/sandwich-kok.jpg';
+    const {name , price , picture} = ItemsFood
 
+    const [state, setState] = useState(false)
 
-export default function ItemsFood() {
-
+    let rotate = e => setState(! state)
     return(
-        <div className="card bg-white relative z-10 text-black rounded-[20px] text-center mb-5 ring-rose-500  ring-4">
-                    <div className="card-header">
-                        <div className=" absolute text-xl inset-x-0 top-0 -mt-4 text-white bg-rose-500 max-w-[11rem] mx-auto p-1 rounded-lg flex justify-around">
-                            <img className='w-4 text-white' src={foodSvg} alt="foodSvg" />
-                            <p className="">کوکتل گوشت</p>
-                            <img className='w-4 text-white' src={foodSvg} alt="foodSvg" />
-                        </div>
-                        <img className="w-full bg-center rounded-t-[20px] text-white" src={sandwichKok} alt="sandwichKok" />
-                    </div>
-                    <div className="card-body p-5 rounded-xl bg-zinc-50">
-                        <div className="flex flex-wrap justify-end">
-                            <div className="flex items-center mb-3 ">
-                                <p className="ml-2 text-sm sm:text-lg text-slate-500 font-normal">کوکتل به مقدار کافی</p>
-                                <svg className="bi bi-check-lg w-5 h-5 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                                </svg>
-                            </div>
-                            <div className="flex items-center mb-3">
-                                <p className="ml-2 text-sm sm:text-lg text-slate-500 font-normal"> متوسط برای سرخ کردن</p>
-                                <svg className="bi bi-check-lg w-5 h-5 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                                </svg>
-                            </div>
-                            <div className="flex items-center mb-3">
-                                <p className="ml-2 text-sm sm:text-lg text-slate-500 font-normal">روغن و نمک</p>
-                                <svg className="bi bi-check-lg w-5 h-5 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                                </svg>
-                            </div>
-                            <div className="flex items-center mb-3">
-                                <p className="ml-2 text-sm sm:text-lg text-slate-500 font-normal">سیب زمینی متوسط</p>
-                                <svg className="bi bi-check-lg w-5 h-5 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                                </svg>
-                            </div>
-                            <div className="flex items-center mb-3">
-                                <p className="ml-2 text-sm sm:text-lg text-slate-500 font-normal">گوشت چرخ کرده</p>
-                                <svg className="bi bi-check-lg w-5 h-5 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                                </svg>
-                            </div>
-                            <div className="flex items-center mb-3">
-                                <p className="ml-2 text-sm sm:text-lg text-slate-500 font-normal">گوشت چرخ کرده</p>
-                                <svg className="bi bi-check-lg w-5 h-5 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="card-footer">
-                        <div className="text-3xl bg-rose-500 rounded-b-[20px] w-full py-3  text-white shadow-md flex justify-center"><span className="mr-2">هزار تومان</span><span>۴۸</span></div>
+        <div className="card relative mt-[6rem] mb-[10rem]">
+            <div className={`card-header w-full relative transform-style h-[9rem] flex justify-center z-10 ${state ? 'flip' : 'reverse-flip'}`} onClick={rotate}>
+                <div className={`card-header-front absolute transform-style w-[95%] h-[14.5rem] bottom-[-1rem] backface bg-center bg-cover ${picture} rounded-[15px] shadow-sm flex flex-col-reverse`}>
+                </div>
+                <div className="card-header-back absolute transform-style rotate-y w-[95%] h-[14.5rem] bottom-[-1rem] backface bg-slate-100 rounded-[15px] text-center shadow-sm">
+                    <h5 className="text-blue-700 mt-7 text-5xl translate-z">Farahzad</h5>
+                </div>
+            </div>
+            <div className="card-main w-full absolute top-0 bg-white text-black rounded-[15px] text-center border-2 "> 
+                <div className="card-body p-5 rounded-[15px] pt-[11rem]">
+                    <div className="flex flex-wrap justify-end">
+                        <h2 className="text-2xl">{`${name}`}</h2>
                     </div>
                 </div>
+                <div className="card-footer">
+                        <div className="text-3xl rounded-b-md w-full pb-3 px-5 text-gray-800 shadow-md flex justify-start">{`${price}`}</div>
+                </div>
+            </div>
+        </div>
     )
 }
