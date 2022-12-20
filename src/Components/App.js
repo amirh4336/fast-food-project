@@ -109,9 +109,9 @@ function App() {
                     <Route path="/" element={<Menu page="listPizza" />} />
                     <Route path="/listSandwich" element={<Menu page="listSandwich" />} />
                     <Route path="/listBurger" element={<Menu page="listBurger" />} />
-                    <Route path="/listApetizer" element={<Menu page="listApetizer" />} />
                     <Route path="/listFried" element={<Menu page="listFried" />} />
                     <Route path="/listDrink" element={<Menu page="listDrink" />} />
+                    <Route path="/listApetizer" element={<Menu page="listApetizer" />} />
         </SlideRoutes>
         <Footer />
       </Context.Provider>
