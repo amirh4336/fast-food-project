@@ -21,7 +21,7 @@ export default function ItemsFood({ItemsFood}) {
                     <h5 className="text-[#6F1A07] mt-7 text-5xl translate-z">Farahzad</h5>
                 </div>
             </div>
-            <div className="card-main w-full absolute top-0 rounded-[15px] text-center border-2 bg-[#F2F1EE] text-[#052130] dark:bg-[#052130] dark:text-[#F2F1EE]"> 
+            <div className="card-main w-full absolute top-0 rounded-[15px] text-center border-2 dark:border-slate-700 bg-[#F2F1EE] text-[#052130] dark:bg-[#052130] dark:text-[#F2F1EE]"> 
                 <div className="card-body p-5 rounded-[15px] pt-[11rem]">
                     <div className="flex flex-wrap justify-end">
                         <h2 className="text-2xl">{`${name}`}</h2>

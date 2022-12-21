@@ -9,7 +9,7 @@ export default function TabFood({TabsFood}) {
     return(
         <div className="rounded-lg flex flex-col">
             <NavLink to={{pathname: path}} className={({ isActive }) => {   
-                                                                            let className = 'rounded-lg border h-14 w-full flex justify-center items-center';    
+                                                                            let className = 'rounded-lg border dark:border-slate-700 h-14 w-full flex justify-center items-center';    
                                                                             if (isActive) {
                                                                                 className += ' bg-[#052130] dark:bg-[#F2F1EE] '
                                                                             } else {
