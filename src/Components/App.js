@@ -20,7 +20,15 @@ import Footer from './Footer/Footer';
 
 
 function App() {
+  // for dark mode
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+  }
 
+
+ // list foods
   const [state , dispatch] = useReducer(Reducer , {
     listBurger : [
       {id:1 , name:"همبرگر دست ساز" , price:"97,000T" , picture:"bg-burger-dast-saz-image"},
@@ -85,14 +93,14 @@ function App() {
       {id: 13 , name:"پپرونی" , price:"97,000T" , picture:"bg-peproni-image"},
     ]
   });
-  
+  // movment for header
   const headerState = useToggleHeader();
 
   
 
 
   return (
-    <main className="min-h-screen font-['Vazir'] bg-[#F2F1EE]  text-[#052130]" >
+    <main className="min-h-screen font-['Vazir'] bg-[#F2F1EE] dark:bg-black  text-[#052130]" >
       <Context.Provider  value={{
         listBurger : state.listBurger,
         listSandwich : state.listSandwich,
