@@ -14,7 +14,7 @@ import useToggleHeader from '../CustomHooks/UseToggleHeader';
 // Component
 import Header from './Header/Header';
 import Menu from './Menu/Menu';
-import TabFoods from './Menu/TabFoods';
+import TabFoods from './Menu/TabFoods/Tabs';
 import Footer from './Footer/Footer';
 
 
