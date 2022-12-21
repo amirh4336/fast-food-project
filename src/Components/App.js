@@ -1,4 +1,7 @@
 import {useReducer} from 'react';
+import { Route } from 'react-router-dom';
+
+import SlideRoutes from 'react-slide-routes';
 // Context
 import Context from '../Context/Context';
 
@@ -11,6 +14,7 @@ import useToggleHeader from '../CustomHooks/UseToggleHeader';
 // Component
 import Header from './Header/Header';
 import Menu from './Menu/Menu';
+import TabFoods from './Menu/TabFoods';
 import Footer from './Footer/Footer';
 
 
@@ -84,22 +88,31 @@ function App() {
   
   const headerState = useToggleHeader();
 
+  
+
 
   return (
-    <main className="min-h-screen font-['Vazir'] " >
+    <main className="min-h-screen font-['Vazir'] bg-[#F2F1EE]  text-[#052130]" >
       <Context.Provider  value={{
-        listCurrent : state.listCurrent,
         listBurger : state.listBurger,
         listSandwich : state.listSandwich,
         listPizza : state.listPizza,
         listApetizer : state.listApetizer,
         listFried : state.listFried,
-        listCst : state.listCst,
+        listDrink : state.listDrink,
         headerState : headerState ,
         dispatch
       }}>
         <Header />
-        <Menu />
+        <TabFoods />
+        <SlideRoutes>
+                    <Route path="/" element={<Menu page="listPizza" />} />
+                    <Route path="/listSandwich" element={<Menu page="listSandwich" />} />
+                    <Route path="/listBurger" element={<Menu page="listBurger" />} />
+                    <Route path="/listFried" element={<Menu page="listFried" />} />
+                    <Route path="/listDrink" element={<Menu page="listDrink" />} />
+                    <Route path="/listApetizer" element={<Menu page="listApetizer" />} />
+        </SlideRoutes>
         <Footer />
       </Context.Provider>
     </main>

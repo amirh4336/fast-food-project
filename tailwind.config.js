@@ -8,12 +8,12 @@ module.exports = {
     extend: {
       backgroundImage: {
         // bg tabs
-        'pizza-image': "url('./Assets/Images/pizza.jpg')",
-        'burger-image': "url('./Assets/Images/burger.jpg')",
-        'sandwich-image': "url('./Assets/Images/sandwich.jpg')",
-        'fried-image': "url('./Assets/Images/fried-2.jpeg')",
-        'drinks-image': "url('./Assets/Images/drinks-2.jpg')",
-        'apetizer-image': "url('./Assets/Images/apetizer-2.jpg')",
+        'pizza-image': "url('./Assets/Icons/pizza.png')",
+        'burger-image': "url('./Assets/Icons/burger.png')",
+        'sandwich-image': "url('./Assets/Icons/sandwich.png')",
+        'fried-image': "url('./Assets/Icons/fried.png')",
+        'drinks-image': "url('./Assets/Icons/drinks.png')",
+        'apetizer-image': "url('./Assets/Icons/apetizer.png')",
         // bg food items
 
         // burger
