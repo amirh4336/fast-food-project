@@ -92,7 +92,7 @@ function App() {
 
 
   return (
-    <main className="min-h-screen font-['Vazir'] " >
+    <main className="min-h-screen font-['Vazir'] bg-[#F2F1EE]  text-[#052130]" >
       <Context.Provider  value={{
         listBurger : state.listBurger,
         listSandwich : state.listSandwich,
