@@ -15,7 +15,7 @@ export default function List({page}) {
     // console.log(listNew);
     return(
         <>
-            <div className="List bg-[#F2F1EE] text-[#052130] px-6 py-10 flex flex-col mt-[10rem] ">
+            <div className="List bg-[#F2F1EE] text-[#052130] dark:bg-[#052130] dark:text-[#F2F1EE] px-6 py-10 flex flex-col mt-[10rem] ">
                 {(() => {
                     switch (page) {
                     case "listSandwich":  return listSandwich.map(ItemFood => <ItemsFood  key={ItemFood.id} ItemsFood={ItemFood} />)

@@ -21,7 +21,7 @@ export default function TabFoods() {
     ];
     
     return(
-        <div className={`grid grid-cols-6 gap-2 fixed w-full bg-[#F2F1EE] text-[#052130] top-20 z-30 px-3 pt-5 pb-0 text-xl shadow-lg transition-all duration-300  ${ headerState ? 'delay-300' : ' -translate-y-20 delay-100'} `}>
+        <div className={`grid grid-cols-6 gap-2 fixed w-full bg-[#F2F1EE] text-[#052130] dark:bg-[#052130] dark:text-[#F2F1EE] top-20 z-30 px-3 pt-5 pb-0 text-xl shadow-lg transition-all duration-300  ${ headerState ? 'delay-300' : ' -translate-y-20 delay-100'} `}>
             {
                 listTabFoods.map(itemTabFood => <TabFood  key={itemTabFood.id} TabsFood={itemTabFood} />)
             }

@@ -11,7 +11,7 @@ export default function TabFood({TabsFood}) {
             <NavLink to={{pathname: path}} className={({ isActive }) => {   
                                                                             let className = 'rounded-lg border h-14 w-full flex justify-center items-center';    
                                                                             if (isActive) {
-                                                                                className += ' bg-[#052130]'
+                                                                                className += ' bg-[#052130] dark:bg-[#F2F1EE] '
                                                                             } else {
                                                                                 className += ''
                                                                             }
@@ -19,7 +19,7 @@ export default function TabFood({TabsFood}) {
                                                                         }}>
                 <div className={`h-12 w-12 bg-cover bg-center  ${bg}`}></div>
             </NavLink>
-            <h3 className="text-[.75rem] text-center p-0 m-0 text-[#052130] ">{`${name}`}</h3>
+            <h3 className="text-[.75rem] text-center p-0 m-0">{`${name}`}</h3>
         </div>
     )
 }

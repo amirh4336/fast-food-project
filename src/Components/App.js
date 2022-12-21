@@ -100,7 +100,7 @@ function App() {
 
 
   return (
-    <main className="min-h-screen font-['Vazir'] bg-[#F2F1EE] dark:bg-black  text-[#052130]" >
+    <main className="min-h-screen font-['Vazir'] bg-[#F2F1EE] text-[#052130] dark:bg-[#052130] dark:text-[#F2F1EE]  " >
       <Context.Provider  value={{
         listBurger : state.listBurger,
         listSandwich : state.listSandwich,
