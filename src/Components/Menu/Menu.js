@@ -8,9 +8,10 @@ import Context from '../../Context/Context';
 // Components
 import ItemsFood from "./ItemsFood";
 
+
 export default function List({page}) {
     
-    const { listPizza , listBurger , listSandwich , listApetizer , listDrinks , listFried} = useContext(Context);
+    const { listPizzaItaly , listPizzaAmerican , listBurger , listSandwich , listApetizer , listDrinks , listFried} = useContext(Context);
 
     // console.log(listNew);
     return(
@@ -23,9 +24,11 @@ export default function List({page}) {
                     case "listApetizer":  return listApetizer.map(ItemFood => <ItemsFood  key={ItemFood.id} ItemsFood={ItemFood} />)
                     case "listDrinks":    return listDrinks.map(ItemFood => <ItemsFood  key={ItemFood.id} ItemsFood={ItemFood} />)
                     case "listFried":     return listFried.map(ItemFood => <ItemsFood  key={ItemFood.id} ItemsFood={ItemFood} />)
-                    default:              return listPizza.map(ItemFood => <ItemsFood  key={ItemFood.id} ItemsFood={ItemFood} />)
+                    case "listPizzaItaly":     return listPizzaItaly.map(ItemFood => <ItemsFood  key={ItemFood.id} ItemsFood={ItemFood} />)
+                    default:               return listPizzaAmerican.map(ItemFood => <ItemsFood  key={ItemFood.id} ItemsFood={ItemFood} />)
                     }
-                })()}                
+                })()}
+                              
             </div>
         </>
     )

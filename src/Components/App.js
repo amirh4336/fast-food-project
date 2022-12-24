@@ -1,4 +1,4 @@
-import {useReducer} from 'react';
+import React , {useReducer} from 'react';
 import { Route } from 'react-router-dom';
 
 import SlideRoutes from 'react-slide-routes';
@@ -46,7 +46,7 @@ function App() {
       {id: 6 , name:"هات داگ رویال" , price:"73,000T" , picture:"bg-hotdog-royal-image"},
       {id: 7 , name:"ساندویچ مرغ" , price:"95,000T" , picture:"bg-sandwich-morgh-image"},
     ],
-    listPizza : [ 
+    listPizzaItaly : [ 
       // italy
       {id: 1 , name:"مخصوص ایتالیایی" , price:"170,000T" , picture:"bg-makhsose-italy-image"},
       {id: 2 , name:"گوشت و قارچ ایتالیایی" , price:"210,000T" , picture:"bg-ghost-va-gharch-italy-image"},
@@ -55,13 +55,14 @@ function App() {
       {id: 5 , name:" چیکن ایتالیایی" , price:"210,000T" , picture:"bg-chicken-italy-image"},
       // {id: 6 , name:"سبزیجات ایتالیایی" , price:"168,000T" , picture:"bg-hotdog-royal-image"},
       {id: 7 , name:"پپرونی ایتالیایی" , price:"183,000T" , picture:"bg-peproni-italy-image"},
-      // american
-      {id: 8 , name:" مینی مخصوص" , price:"63,000T" , picture:"bg-mini-makhsose-image"},
-      {id: 9 , name:"مخصوص" , price:"87,000T" , picture:"bg-makhsose-image"},
-      {id: 10 , name:"گوشت و قارچ" , price:"113,000T" , picture:"bg-gosht-va-gharch-image"},
-      {id: 11 , name:"رست بیف" , price:"117,000T" , picture:"bg-roast-beef-image"},
-      {id: 12 , name:"چیکن" , price:"105,000T" , picture:"bg-chicken-image"},
-      {id: 13 , name:"پپرونی" , price:"97,000T" , picture:"bg-peproni-image"},
+    ],
+    listPizzaAmerican : [ 
+      {id: 1 , name:" مینی مخصوص" , price:"63,000T" , picture:"bg-mini-makhsose-image"},
+      {id: 2 , name:"مخصوص" , price:"87,000T" , picture:"bg-makhsose-image"},
+      {id: 3 , name:"گوشت و قارچ" , price:"113,000T" , picture:"bg-gosht-va-gharch-image"},
+      {id: 4 , name:"رست بیف" , price:"117,000T" , picture:"bg-roast-beef-image"},
+      {id: 5 , name:"چیکن" , price:"105,000T" , picture:"bg-chicken-image"},
+      {id: 6 , name:"پپرونی" , price:"97,000T" , picture:"bg-peproni-image"},
     ],
     listApetizer : [ 
       {id: 1 , name:"سالاد ویژه فرحزاد" , price:"25,000T" , picture:"bg-salad-vizhe-farahzad-image"},
@@ -96,7 +97,7 @@ function App() {
   // movment for header
   const headerState = useToggleHeader();
 
-  
+
 
 
   return (
@@ -104,7 +105,8 @@ function App() {
       <Context.Provider  value={{
         listBurger : state.listBurger,
         listSandwich : state.listSandwich,
-        listPizza : state.listPizza,
+        listPizzaItaly : state.listPizzaItaly,
+        listPizzaAmerican : state.listPizzaAmerican,
         listApetizer : state.listApetizer,
         listFried : state.listFried,
         listDrink : state.listDrink,
@@ -114,12 +116,13 @@ function App() {
         <Header />
         <TabFoods />
         <SlideRoutes>
-                    <Route path="/" element={<Menu page="listPizza" />} />
-                    <Route path="/listSandwich" element={<Menu page="listSandwich" />} />
-                    <Route path="/listBurger" element={<Menu page="listBurger" />} />
-                    <Route path="/listFried" element={<Menu page="listFried" />} />
-                    <Route path="/listDrink" element={<Menu page="listDrink" />} />
-                    <Route path="/listApetizer" element={<Menu page="listApetizer" />} />
+                      <Route path="/listPizza/listPizzaAmerican" element={<Menu page="listPizzaAmerican" />} />
+                      <Route path="/listPizza/listPizzaItaly" element={<Menu page="listPizzaItaly" />} />
+                      <Route path="/listSandwich" element={<Menu page="listSandwich" />} />
+                      <Route path="/" element={<Menu page="listBurger" />} />
+                      <Route path="/listFried" element={<Menu page="listFried" />} />
+                      <Route path="/listDrink" element={<Menu page="listDrink" />} />
+                      <Route path="/listApetizer" element={<Menu page="listApetizer" />} />
         </SlideRoutes>
         <Footer />
       </Context.Provider>
