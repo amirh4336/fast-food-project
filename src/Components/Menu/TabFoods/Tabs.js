@@ -1,4 +1,4 @@
-import { useContext , useState } from 'react';
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
 // context
@@ -8,7 +8,7 @@ import Context from '../../../Context/Context';
 import TabFood from './TabFood';
 import SubTabFood from './SubTab/SubTabFood';
 
-export default function TabFoods() {
+export default function TabFoods({Show , setShow}) {
 
     const { headerState } = useContext(Context);
 
@@ -21,7 +21,6 @@ export default function TabFoods() {
         { id:6 , name:"پیش غذا" , bg:"bg-apetizer-image" , path:"/listApetizer" },            
     ];
     
-    const [Show, setShow] = useState(window.location.pathname === '/listPizza/listPizzaAmerican' || window.location.pathname === '/listPizza/listPizzaItaly' ? true : false)
 
     return(
         <>

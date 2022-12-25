@@ -9,14 +9,14 @@ import Context from '../../Context/Context';
 import ItemsFood from "./ItemsFood";
 
 
-export default function List({page}) {
+export default function List({page , Show}) {
     
     const { listPizzaItaly , listPizzaAmerican , listBurger , listSandwich , listApetizer , listDrinks , listFried} = useContext(Context);
 
     // console.log(listNew);
     return(
         <>
-            <div className="List bg-[#F2F1EE] text-[#052130] dark:bg-[#052130] dark:text-[#F2F1EE] px-6 py-10 flex flex-col mt-[10rem] ">
+            <div className={`List bg-[#F2F1EE] text-[#052130] dark:bg-[#052130] dark:text-[#F2F1EE] px-6 py-10 flex flex-col mt-[10rem] transition-all ${Show ? 'pt-[5rem]' : ''}`}>
                 {(() => {
                     switch (page) {
                     case "listSandwich":  return listSandwich.map(ItemFood => <ItemsFood  key={ItemFood.id} ItemsFood={ItemFood} />)

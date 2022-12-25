@@ -1,4 +1,4 @@
-import React , {useReducer} from 'react';
+import React , {useReducer , useState} from 'react';
 import { Route } from 'react-router-dom';
 
 import SlideRoutes from 'react-slide-routes';
@@ -97,6 +97,9 @@ function App() {
   // movment for header
   const headerState = useToggleHeader();
 
+  // for sub tabs
+  const [ShowSub, setShowSub] = useState(window.location.pathname === '/listPizza/listPizzaAmerican' || window.location.pathname === '/listPizza/listPizzaItaly' ? true : false)
+
 
 
 
@@ -114,10 +117,10 @@ function App() {
         dispatch
       }}>
         <Header />
-        <TabFoods />
+        <TabFoods Show={ShowSub} setShow={setShowSub} />
         <SlideRoutes>
-                      <Route path="/listPizza/listPizzaAmerican" element={<Menu page="listPizzaAmerican" />} />
-                      <Route path="/listPizza/listPizzaItaly" element={<Menu page="listPizzaItaly" />} />
+                      <Route path="/listPizza/listPizzaAmerican" element={<Menu page="listPizzaAmerican" Show={ShowSub} />} />
+                      <Route path="/listPizza/listPizzaItaly" element={<Menu page="listPizzaItaly" Show={ShowSub} />} />
                       <Route path="/listSandwich" element={<Menu page="listSandwich" />} />
                       <Route path="/" element={<Menu page="listBurger" />} />
                       <Route path="/listFried" element={<Menu page="listFried" />} />
