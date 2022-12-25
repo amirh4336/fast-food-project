@@ -21,7 +21,7 @@ export default function TabFoods() {
         { id:6 , name:"پیش غذا" , bg:"bg-apetizer-image" , path:"/listApetizer" },            
     ];
     
-    const [Show, setShow] = useState(false)
+    const [Show, setShow] = useState(window.location.pathname === '/listPizza/listPizzaAmerican' || window.location.pathname === '/listPizza/listPizzaItaly' ? true : false)
 
     return(
         <>
