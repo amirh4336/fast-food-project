@@ -2,13 +2,15 @@ import { NavLink } from 'react-router-dom';
 
 
 
-export default function TabFood({TabsFood}) {
+export default function TabFood({TabsFood , ToggleSub}) {
 
-    const {name , bg , path} = TabsFood
+    const {name , bg , path} = TabsFood ;
     
+    
+
     return(
         <div className="rounded-lg flex flex-col">
-            <NavLink to={{pathname: path}} className={({ isActive }) => {   
+            <NavLink to={{pathname: path}} onClick={() => {ToggleSub(false)}} className={({ isActive }) => {   
                                                                             let className = 'rounded-lg border dark:border-slate-700 h-14 w-full flex justify-center items-center';    
                                                                             if (isActive) {
                                                                                 className += ' bg-[#052130] dark:bg-[#F2F1EE] '
