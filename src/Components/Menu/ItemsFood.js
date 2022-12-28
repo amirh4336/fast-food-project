@@ -1,11 +1,10 @@
 import {useState} from 'react';
 
 // //svg
-// import {back} from './../../Assets/Logos/Logos';
+import {BackIcon} from '../../Assets/Logos/Logos';
 
 // Style
 import './ItemsFood.scss';
-
 
 
 export default function ItemsFood({ItemsFood}) {
@@ -21,9 +20,7 @@ export default function ItemsFood({ItemsFood}) {
                 <div className={`card-header-front absolute transform-style w-[95%] h-[14.5rem] bottom-[-1rem] backface bg-center bg-cover ${picture} rounded-[15px] shadow-sm flex flex-col-reverse`}>
                     <div className="flex justify-end">
                         <div className="p-1 m-3 text-[#F2F1EE]">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
-                            </svg> 
+                            {BackIcon()}
                         </div>
                     </div>
                 </div>
@@ -32,9 +29,7 @@ export default function ItemsFood({ItemsFood}) {
                         <h5 className=" mt-7 text-5xl translate-z">Farahzad</h5>
                         <div className="mr-0 ml-auto">
                             <div className="p-1 m-3 text-[#F2F1EE] dark:text-[#052130]">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
-                                </svg> 
+                                {BackIcon()}
                             </div>
                         </div>
                     </div>
