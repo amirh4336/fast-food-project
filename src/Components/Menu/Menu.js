@@ -28,7 +28,6 @@ export default function List({page , Show}) {
                     default:               return listPizzaAmerican.map(ItemFood => <ItemsFood  key={ItemFood.id} ItemsFood={ItemFood} />)
                     }
                 })()}
-                              
             </div>
         </>
     )

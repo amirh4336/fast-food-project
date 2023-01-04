@@ -6,13 +6,17 @@ import {BackIcon} from '../../Assets/Logos/Logos';
 // Style
 import './ItemsFood.scss';
 
+// components
+import DetalisFood from './DetalisFood'
 
 export default function ItemsFood({ItemsFood}) {
 
-    const {name , price , picture} = ItemsFood
+    const {name , price , picture , detalis} = ItemsFood
 
+    let Detalis = [...detalis]
+
+    let i = 0;
     const [state, setState] = useState(false)
-
     let rotate = e => setState(! state)
     return(
         <div className="card relative mt-[6rem] mb-[10rem] bg-[#F2F1EE] text-[#052130] dark:bg-[#052130] dark:text-[#F2F1EE]">
@@ -26,9 +30,16 @@ export default function ItemsFood({ItemsFood}) {
                 </div>
                 <div className="card-header-back absolute transform-style rotate-y w-[95%] h-[14.5rem] bottom-[-1rem] backface dark:bg-[#F2F1EE] dark:text-[#052130] bg-[#052130] text-[#F2F1EE] rounded-[15px] text-center shadow-sm">
                     <div className="flex flex-col h-full w-full justify-between items-center">
-                        <h5 className=" mt-7 text-5xl translate-z">Farahzad</h5>
+                        <div className="w-full">
+                        <h5 className="mt-7 text-5xl translate-z">Farahzad</h5>
+                        <div className="flex flex-wrap justify-end">
+                            {
+                                Detalis.map(detailFood => <DetalisFood key={i++} Detalis={detailFood} />)
+                            }
+                        </div>
+                        </div>
                         <div className="mr-0 ml-auto">
-                            <div className="p-1 m-3 text-[#F2F1EE] dark:text-[#052130]">
+                            <div className="p-1 mb-3 mr-3 text-[#F2F1EE] dark:text-[#052130]">
                                 {BackIcon()}
                             </div>
                         </div>
