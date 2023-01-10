@@ -21,11 +21,10 @@ export default function ItemsFood({ItemsFood}) {
     return(
         <div className="card relative mt-[6rem] mb-[10rem] bg-[#F2F1EE] text-[#052130] dark:bg-[#052130] dark:text-[#F2F1EE]">
             <div className={`card-header w-full relative transform-style h-[9rem] flex justify-center z-10 ${state ? 'flip' : 'reverse-flip'}`} onClick={rotate}>
-                <div className={`card-header-front absolute transform-style w-[95%] h-[14.5rem] bottom-[-1rem] backface bg-center bg-cover ${picture} rounded-[15px] shadow-sm flex flex-col-reverse`}>
-                    <div className="flex justify-end">
-                        <div className="p-1 m-3 text-[#F2F1EE]">
-                            {BackIcon()}
-                        </div>
+                <div className="card-header-front transform-style backface w-full flex justify-center">
+                    <img className=' w-[95%] h-[14.5rem] left-auto right-auto absolute bottom-[-1rem] rounded-[15px] shadow-sm' src={picture} alt={name}/>
+                    <div className="absolute bottom-0 right-6 text-[#F2F1EE]">
+                        {BackIcon()}
                     </div>
                 </div>
                 <div className="card-header-back absolute transform-style rotate-y w-[95%] h-[14.5rem] bottom-[-1rem] backface dark:bg-[#F2F1EE] dark:text-[#052130] bg-[#052130] text-[#F2F1EE] rounded-[15px] text-center shadow-sm">

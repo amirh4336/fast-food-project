@@ -1,8 +1,10 @@
 import {useContext} from 'react';
 
-
 // context
-import Context from '../../Context/Context';  
+import Context from '../../Context/Context';
+
+// food images
+
 
 
 // Components
