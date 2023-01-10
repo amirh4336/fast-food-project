@@ -1,4 +1,4 @@
-import {useContext} from 'react';
+import {useContext , memo} from 'react';
 
 // context
 import Context from '../../Context/Context';
@@ -10,12 +10,11 @@ import Context from '../../Context/Context';
 // Components
 import ItemsFood from "./ItemsFood";
 
-
-export default function List({page , Show}) {
+const List = ({page , Show}) => {
     
     const { listPizzaItaly , listPizzaAmerican , listBurger , listSandwich , listApetizer , listDrinks , listFried} = useContext(Context);
 
-    // console.log(listNew);
+    console.log("child menu");
     return(
         <>
             <div className={`List bg-[#F2F1EE] text-[#052130] dark:bg-[#052130] dark:text-[#F2F1EE] px-6 py-10 flex flex-col mt-[10rem] transition-all ${Show ? 'pt-[5rem]' : ''}`}>
@@ -34,3 +33,8 @@ export default function List({page , Show}) {
         </>
     )
 }
+
+export default memo(List , (prevProps , nextProps) => {
+    // console.log(prevProps , nextProps);
+    return prevProps.page === nextProps.page
+})

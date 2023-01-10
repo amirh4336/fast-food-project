@@ -1,16 +1,11 @@
-import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
-// context
-import Context from '../../../Context/Context';
 
 // Components
 import TabFood from './TabFood';
 import SubTabFood from './SubTab/SubTabFood';
 
-export default function TabFoods({Show , setShow}) {
-
-    const { headerState } = useContext(Context);
+const TabFoods = ({Show , setShow , headerState}) => {
 
     const listTabFoods =  [
         // { id:1 , name:"پیتزا" , bg:"bg-pizza-image" , path:"/listPizza/listPizzaItaly" },
@@ -55,3 +50,5 @@ export default function TabFoods({Show , setShow}) {
 
     )
 }
+
+export default TabFoods

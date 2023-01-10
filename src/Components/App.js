@@ -8,13 +8,9 @@ import Context from '../Context/Context';
 // Reducers
 import Reducer from '../Reducers/Reducer';
 
-// Custom Hooks
-import useToggleHeader from '../CustomHooks/UseToggleHeader';
-
 // Component
 import Header from './Header/Header';
 import Menu from './Menu/Menu';
-import TabFoods from './Menu/TabFoods/Tabs';
 import Footer from './Footer/Footer';
 
 // food image
@@ -161,8 +157,7 @@ function App() {
       {id: 3 , name:"فیله سوخاری" , price:"95,000T" , detalis:["سه تیکه با مخلفات"]  , picture: fileSokhariImg},
     ],
   });
-  // movment for header
-  const headerState = useToggleHeader();
+
 
   // for sub tabs
   const [ShowSub, setShowSub] = useState(window.location.pathname === '/listPizza/listPizzaAmerican' || window.location.pathname === '/listPizza/listPizzaItaly' ? true : false)
@@ -180,11 +175,9 @@ function App() {
         listApetizer : state.listApetizer,
         listFried : state.listFried,
         listDrinks : state.listDrinks,
-        headerState : headerState ,
         dispatch
       }}>
-        <Header />
-        <TabFoods Show={ShowSub} setShow={setShowSub} />
+        <Header Show={ShowSub} setShow={setShowSub} />
         <SlideRoutes>
           <Route path="/listPizza/listPizzaAmerican" element={<Menu page="listPizzaAmerican" Show={ShowSub} />} />
           <Route path="/listPizza/listPizzaItaly" element={<Menu page="listPizzaItaly" Show={ShowSub} />} />
