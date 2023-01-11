@@ -17,10 +17,13 @@
 }
 
 .translate-z-0 {
-    transform: translateZ(1rem);
+    transform: translateZ(.5rem);
 }
 .translate-z {
-    transform: translateZ(5rem);
+    transform: translateZ(2rem);
+}
+.translate-z-1 {
+    transform: translateZ(3rem);
 }
 
 .backface {
@@ -28,9 +31,7 @@
     -webkit-backface-visibility:hidden;
 }
 
-// // .translate-z-8 {
-// //     transform: rotateX(.5turn); 
-// // }
+
 .rotate-y {
     transform: rotateY(.5turn); 
 }
