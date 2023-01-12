@@ -4,7 +4,7 @@
 export default function Login() {
 
   return(
-    <section className="bg-gray-800 w-full px-4 sm:px-8 h-[100vh] flex justify-center items-center font-['Vazir']">
+    <section className="bg-gradient-to-r from-slate-700 to-cyan-600 w-full px-4 sm:px-8 h-[100vh] flex justify-center items-center font-['Vazir']">
       <form type="submit" className="bg-white w-full sm:max-w-[380px] flex flex-col items-center p-4 rounded-[15px] shadow-md mb-24">
         <h2 className="text-2xl font-bold mt-4">ورود به پنل</h2>
         <div className="form-content w-full my-8 flex flex-col">
@@ -33,7 +33,7 @@ export default function Login() {
           </label>
 
         </div>
-        <button type="submit" className="bg-cyan-600 text-white w-full py-2 text-lg rounded-[4px]">ورود</button>
+        <button type="submit" className="bg-sky-600 text-white w-full py-2 text-lg rounded-[4px]">ورود</button>
       </form>
     </section>
   )
