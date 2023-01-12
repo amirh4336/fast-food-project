@@ -2,13 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './Components/App';
+import Admin from './Components/Admin/Admin';
+import Login from './Components/Admin/Auth/Login';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter} from 'react-router-dom';
+import { BrowserRouter , Route} from 'react-router-dom';
+import SlideRoutes from 'react-slide-routes';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <App />
+    <SlideRoutes>
+      <Route path="*" element={<App />} />
+      <Route path="/admin" element={<Admin />} />
+      <Route path="/login" element={<Login />} />
+    </SlideRoutes>
   </BrowserRouter>
 );
 
