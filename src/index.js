@@ -5,17 +5,16 @@ import App from './Components/App';
 import Admin from './Components/Admin/Admin';
 import Login from './Components/Admin/Auth/Login';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter , Route} from 'react-router-dom';
-import SlideRoutes from 'react-slide-routes';
+import { BrowserRouter , Route , Routes} from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <SlideRoutes>
+    <Routes>
       <Route path="*" element={<App />} />
-      <Route path="/admin" element={<Admin />} />
+      <Route path="/admin/*" element={<Admin />} />
       <Route path="/login" element={<Login />} />
-    </SlideRoutes>
+    </Routes>
   </BrowserRouter>
 );
 

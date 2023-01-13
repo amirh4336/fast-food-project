@@ -34,7 +34,4 @@ const List = ({page , Show}) => {
     )
 }
 
-export default memo(List , (prevProps , nextProps) => {
-    // console.log(prevProps , nextProps);
-    return prevProps.page === nextProps.page
-})
+export default memo(List)

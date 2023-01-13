@@ -15,8 +15,8 @@ export default function AddItems({setShowAdd }) {
   const [ShowDetails, setShowDetails] = useState(false);
 
   return (
-    <div className="w-full backdrop-blur-sm absolute top-0 px-4 sm:px-8 h-[100vh] flex justify-center items-center font-['Vazir']">
-      <form type="submit" className={`bg-white relative w-full sm:max-w-[380px] opacity-100 flex flex-col items-center p-4 rounded-[15px] shadow-md ${ShowDetails ? 'mt-[12rem]' : ''}`}>
+    <div className="w-full z-30 backdrop-blur-sm absolute top-0 px-4 sm:px-8 h-[100vh] flex justify-center items-center font-['Vazir']">
+      <form type="submit" className={`bg-white relative w-full sm:max-w-[380px] opacity-100 flex flex-col items-center p-4 rounded-[15px] shadow-md ${ShowDetails ? 'mt-[15rem]' : ''}`}>
         <button type="button" title='Close' onClick={() => setShowAdd(false)} className="w-8 absolute right-2 top-3"><Close /></button>
         <h2 className="text-2xl font-bold mt-4">افزودن غذا</h2>
         <div className="form-content w-full mt-5 mb-8 flex flex-col">
@@ -94,8 +94,12 @@ export default function AddItems({setShowAdd }) {
             peer" 
             type="text" placeholder="قیمت غذا خود را وارد کنید" required />
           </label>
+          <label className="mb-4">
+            <p className="text-lg mb-2">عکس غذا</p>
+            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+          </label>
 
-          <label className="col-span-2 mb-2 flex" >
+          <label className="col-span-2 mb-2 flex " >
             <input type="checkbox" onClick={() => setShowDetails(!ShowDetails)} />
             <p className="text-lg mr-2">جزیئات غذا</p>
           </label>
