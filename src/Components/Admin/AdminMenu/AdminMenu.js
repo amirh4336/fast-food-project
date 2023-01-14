@@ -14,7 +14,7 @@ const List = ({page , Show}) => {
 
     return(
         <>
-            <div className={`List bg-[#F2F1EE] text-[#052130] dark:bg-[#052130] dark:text-[#F2F1EE] px-6 grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4 transition-all ${Show ? 'pt-[5rem]' : ''}`}>
+            <div className={`List bg-[#ffff] text-[#052130] dark:bg-[#052130] dark:text-[#ffff] px-6 w-screen grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4 transition-all ${Show ? 'pt-[2.5rem]' : ''}`}>
                 {(() => {
                     switch (page) {
                     case "listSandwich":  return listSandwich.map(ItemFood => <AdminMenuItems  key={ItemFood.id} ItemsFood={ItemFood} />)

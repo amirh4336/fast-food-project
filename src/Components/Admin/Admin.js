@@ -137,10 +137,10 @@ export default function Admin() {
 
 
   // for sub tabs
-  const [ShowSub, setShowSub] = useState(window.location.pathname === 'admin/listPizza/listPizzaAmerican' || window.location.pathname === 'admin/listPizza/listPizzaItaly' ? true : false)
+  const [ShowSub, setShowSub] = useState(window.location.pathname === '/admin/listPizza/listPizzaAmerican' || window.location.pathname === '/admin' ? true : false)
 
   return(
-    <div className="main md:flex justify-end">
+    <div className="main md:flex justify-end font-['Vazir'] relative" >
       <Context.Provider  value={{
         listBurger : state.listBurger,
         listSandwich : state.listSandwich,
@@ -152,28 +152,28 @@ export default function Admin() {
         dispatch
       }}>
 
-        <div className="rightcontent md:w-full bg-slate-100 min-h-screen">
-            <AdminHeader ShowSub={ShowSub} setShowSub={setShowSub} setShowAdd={setShowAdd} showAdd={showAdd} />
-            <div className="main-content">
-              <SlideRoutes>
-                <Route path="/listApetizer" element={<AdminMenu page="listApetizer" />} />
-                <Route path="/listDrink" element={<AdminMenu page="listDrinks" />} />
-                <Route path="/listFried" element={<AdminMenu page="listFried" />} />
-                <Route path="/listBurger" element={<AdminMenu page="listBurger" />} />
-                <Route path="/listSandwich" element={<AdminMenu page="listSandwich" />} />
-                <Route path="/" element={<AdminMenu page="listPizzaItaly" Show={ShowSub} />} />
-                <Route path="/listPizza/listPizzaAmerican" element={<AdminMenu page="listPizzaAmerican" Show={ShowSub} />} />
-              </SlideRoutes>
-            </div>
+        <AdminHeader ShowSub={ShowSub} setShowSub={setShowSub} setShowAdd={setShowAdd} showAdd={showAdd} />
+
+        <div className={`main-content pt-[7.5rem]  ${showAdd ? 'h-screen overflow-hidden': ''}`}>
+          <SlideRoutes>
+            <Route path="/listApetizer" element={<AdminMenu page="listApetizer" />} />
+            <Route path="/listDrink" element={<AdminMenu page="listDrinks" />} />
+            <Route path="/listFried" element={<AdminMenu page="listFried" />} />
+            <Route path="/listBurger" element={<AdminMenu page="listBurger" />} />
+            <Route path="/listSandwich" element={<AdminMenu page="listSandwich" />} />
+            <Route path="/listPizza/listPizzaAmerican" element={<AdminMenu page="listPizzaAmerican" Show={ShowSub} />} />
+            <Route path="/" element={<AdminMenu page="listPizzaItaly" Show={ShowSub} />} />
+          </SlideRoutes>
+        </div>
+        <div className=''>
+          {
+            showAdd
+            ? <AddItems setShowAdd={setShowAdd}/>
+            : ''
+          }
+
         </div>
 
-
-        {
-          showAdd
-          ? <AddItems setShowAdd={setShowAdd}/>
-          : ''
-        }
-        
       </Context.Provider>
     </div>
   )
