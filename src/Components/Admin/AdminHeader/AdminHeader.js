@@ -1,4 +1,7 @@
-import {useState} from 'react';
+import {useContext , useState} from 'react';
+
+// context
+import Context from '../../../Context/Context';
 
 // Component
 import AdminTab from './AdminTabsFoods/AdminTab';
@@ -6,15 +9,21 @@ import AdminTab from './AdminTabsFoods/AdminTab';
 // Logo
 import {User , Settings , LogOut , Plus} from '../../../Assets/Logos/Logos';
 
-export default function AdminHeader({ShowSub , setShowSub , setShowAdd}) {
+export default function AdminHeader({ShowSub , setShowSub}) {
   
   const [show, setShow] = useState(false);
 
+  const {setShowEditForm , setShowForm} = useContext(Context);
+  let ToggleForm = () =>  {
+    setShowEditForm(false);
+    setShowForm(true);
+  }
+  
   return(
     <>
       <nav className="bg-white p-3 fixed w-full z-30 text-slate-400 flex justify-between shadow-sm items-center">
         <div className="right-nav flex">
-          <button onClick={() => setShowAdd(true)} type="button" title='add' className="flex border p-2 rounded-lg">
+          <button onClick={ToggleForm} type="button" title='add' className="flex border p-2 rounded-lg">
             <span  className="w-8 h-8 text-slate-600" >
               <Plus />
             </span>

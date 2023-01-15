@@ -15,7 +15,8 @@ import AdminReducer from '../../Reducers/AdminReducer';
 
 // Components 
 import AdminHeader from './AdminHeader/AdminHeader';
-import AddItems from './FormAddItems/AddItems';
+import AddItems from './AdminForm/Form';
+// import EditItems from './Forms/FormEditItems/EditItems';
 import AdminMenu from './AdminMenu/AdminMenu';
 
 // food image
@@ -75,66 +76,71 @@ export default function Admin() {
   //   return <Navigate to="/login" replace />;
   // }
 
-  const [showAdd, setShowAdd] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+  const [showEditForm, setShowEditForm] = useState(false);
 
+  
 
   // list foods
   const [state , dispatch] = useReducer(AdminReducer , {
     listBurger : [
-      // {id:1 , name:"همبرگر مرغ" , price:"93,000T" , detalis:["مرغ 180 گرم" , "سبزیجات" , "سس قارچ"]  , picture:"bg-none"},
-      {id:2 , name:"همبرگر مخصوص" , price:"59,000T" , detalis:["برگر 60% کارخانه ،مام" , "سبزیجات"]  , picture: burgerMakhsoseImg},
-      // {id:3 , name:"رویال برگر" , price:"78,000T" , detalis:["برگر 60% کارخانه ،مام" , "سبزیجات"]  , picture:"bg-none"},
-      {id:4 , name:"چیز برگر" , price:"69,000T" , detalis:["برگر۶۰٪ کارخانه" , "پنیر گودا" , "سبزیجات"]  , picture: chizeBurgerImg },
-      {id:5 , name:"همبرگر دست ساز" , price:"97,000T" , detalis:["گوشت 170 گرم" , "سس قارچ" , "سبزیجات"]  , picture: burgerDastSazImg },
-      {id:6 , name:"همبرگر دست ساز ویژه" , price:"113,000T" , detalis:["گوشت 170 گرم" , "قارچ" , "پنیر" , "سبزیجات"]  , picture:burgerDastSazVizheImg},
-      {id:7 , name:"همبرگر دست ساز اسپشیال" , price:"145,000T" , detalis:["گوشت 170 گرم" , " دو عدد فیله‌ی مرغ" , "دو ورق ژامبون" , "قارچ" , "پنیر گودا", "پنیر پیتزا", "پنیر سرخ شده"]  , picture: burgerDastSazSpecialImg},
+      // {id:1 ,  type:'listBurger' ,name:"همبرگر مرغ" , price:"93,000T" , detalis:["مرغ 180 گرم" , "سبزیجات" , "سس قارچ"]  , picture:"bg-none"},
+      {id:2 ,  type:'listBurger' ,name:"همبرگر مخصوص" , price:"59,000T" , detalis:["برگر 60% کارخانه ،مام" , "سبزیجات"]  , picture: burgerMakhsoseImg},
+      // {id:3 ,  type:'listBurger' ,name:"رویال برگر" , price:"78,000T" , detalis:["برگر 60% کارخانه ،مام" , "سبزیجات"]  , picture:"bg-none"},
+      {id:4 ,  type:'listBurger' ,name:"چیز برگر" , price:"69,000T" , detalis:["برگر۶۰٪ کارخانه" , "پنیر گودا" , "سبزیجات"]  , picture: chizeBurgerImg },
+      {id:5 ,  type:'listBurger' ,name:"همبرگر دست ساز" , price:"97,000T" , detalis:["گوشت 170 گرم" , "سس قارچ" , "سبزیجات"]  , picture: burgerDastSazImg },
+      {id:6 ,  type:'listBurger' ,name:"همبرگر دست ساز ویژه" , price:"113,000T" , detalis:["گوشت 170 گرم" , "قارچ" , "پنیر" , "سبزیجات"]  , picture:burgerDastSazVizheImg},
+      {id:7 ,  type:'listBurger' ,name:"همبرگر دست ساز اسپشیال" , price:"145,000T" , detalis:["گوشت 170 گرم" , " دو عدد فیله‌ی مرغ" , "دو ورق ژامبون" , "قارچ" , "پنیر گودا", "پنیر پیتزا", "پنیر سرخ شده"]  , picture: burgerDastSazSpecialImg},
     ],
     listSandwich : [ 
-      {id: 1 , name:"کوکتل گوشت" , price:"48,000T" , detalis:["کوکتل %70" , "سبزیجات تازه‌ی روز"]  , picture:koktelGoshtImg},
-      {id: 2 , name:"کوکتل ویژه" , price:"63,000T" , detalis:["کوکتل %70" , "قارچ" , "پنیر"]  , picture:koktelVizheImg},
-      {id: 3 , name:"کوکتل بندری" , price:"57,000T" , detalis:["کوکتل %70" , "پیاز" , "فلفل دلمه" , "ادویه مخصوص فرحزاد"]  , picture: bandariImg},
-      {id: 4 , name:"کوکتل بندری ویژه" , price:"69,000T" , detalis:["کوکتل %70" , "پیاز" , "فلفل دلمه" , "ادویه مخصوص فرحزاد", "قارچ" , "سبزیجات" , "پنیر"]  , picture: bandariVizhemg},
-      {id: 5 , name:"هات داگ ساده" , price:"57,000T" , detalis:["هات داگ %75" , "سبزیجات"]  , picture: hotdogImg},
-      // {id: 12 , name:"پپرونی تنوری" , price:"145,000T" , detalis:["پپرونی 30 ورق" , "قارچ" , "پنیر" , "هات داگ" , "سبزیجات"]  , picture:"bg-peproni-tanori-img"},
+      {id: 1 , type:'listSandwich' , name:"کوکتل گوشت" , price:"48,000T" , detalis:["کوکتل %70" , "سبزیجات تازه‌ی روز"]  , picture:koktelGoshtImg},
+      {id: 2 , type:'listSandwich' , name:"کوکتل ویژه" , price:"63,000T" , detalis:["کوکتل %70" , "قارچ" , "پنیر"]  , picture:koktelVizheImg},
+      {id: 3 , type:'listSandwich' , name:"کوکتل بندری" , price:"57,000T" , detalis:["کوکتل %70" , "پیاز" , "فلفل دلمه" , "ادویه مخصوص فرحزاد"]  , picture: bandariImg},
+      {id: 4 , type:'listSandwich' , name:"کوکتل بندری ویژه" , price:"69,000T" , detalis:["کوکتل %70" , "پیاز" , "فلفل دلمه" , "ادویه مخصوص فرحزاد", "قارچ" , "سبزیجات" , "پنیر"]  , picture: bandariVizhemg},
+      {id: 5 , type:'listSandwich' , name:"هات داگ ساده" , price:"57,000T" , detalis:["هات داگ %75" , "سبزیجات"]  , picture: hotdogImg},
+      // {id: 12  type:'listSandwich' ,, name:"پپرونی تنوری" , price:"145,000T" , detalis:["پپرونی 30 ورق" , "قارچ" , "پنیر" , "هات داگ" , "سبزیجات"]  , picture:"bg-peproni-tanori-img"},
     ],
     listPizzaItaly : [ 
-      {id: 1 , name:"مخصوص" , price:"170,000T" , detalis:["ژامبون" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"]  , picture: makhsoseItalyImg},
-      {id: 2 , name:"گوشت و قارچ" , price:"210,000T" , detalis:["گوشت چرخ کرده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"]  , picture: ghostVaGharchItalyImg},
-      {id: 3 , name:"رست چیکن" , price:"197,000T" , detalis:["مرغ رست شده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"]  , picture: roastBeefItalyImg},
-      {id: 4 , name:"رست بیف" , price:"217,000T" , detalis:["گوشت رست شده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"]   , picture: chickenItalyImg},
-      {id: 5 , name:"چیکن" , price:"210,000T" , detalis:["مرغ نگینی طعم دار شده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون" , "ذرت"]   , picture: peproniItalyImg},
-      // {id: 6 , name:"سبزیجات" , price:"167,000T" , detalis:["قارچ" , "فلفل دلمه" , "ذرت" , "گوجه" , "پنیر ترکیبی"]   , picture:"bg-hotdog-royal-image"},
-      // {id: 7 , name:"پپرونی" , price:"183,000T" , detalis:["پپرونی %90" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "ذرت" , "زیتون" ]   , picture:"bg-peproni-italy-img"},
-      // {id: 8 , name:"دیابلو" , price:"183,000T" , detalis:["خمیر ایتالیایی", "رول سوخاری" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون" ]   , picture:"bg-diablo-italy-img"},
+      {id: 1 , type:'listPizzaItaly' , name:"مخصوص" , price:"170,000T" , detalis:["ژامبون" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"]  , picture: makhsoseItalyImg},
+      {id: 2 , type:'listPizzaItaly' , name:"گوشت و قارچ" , price:"210,000T" , detalis:["گوشت چرخ کرده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"]  , picture: ghostVaGharchItalyImg},
+      {id: 3 , type:'listPizzaItaly' , name:"رست چیکن" , price:"197,000T" , detalis:["مرغ رست شده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"]  , picture: roastBeefItalyImg},
+      {id: 4 , type:'listPizzaItaly' , name:"رست بیف" , price:"217,000T" , detalis:["گوشت رست شده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"]   , picture: chickenItalyImg},
+      {id: 5 , type:'listPizzaItaly' , name:"چیکن" , price:"210,000T" , detalis:["مرغ نگینی طعم دار شده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون" , "ذرت"]   , picture: peproniItalyImg},
+      // {id: 6 , type:'listPizzaItaly' , name:"سبزیجات" , price:"167,000T" , detalis:["قارچ" , "فلفل دلمه" , "ذرت" , "گوجه" , "پنیر ترکیبی"]   , picture:"bg-hotdog-royal-image"},
+      // {id: 7 , type:'listPizzaItaly' , name:"پپرونی" , price:"183,000T" , detalis:["پپرونی %90" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "ذرت" , "زیتون" ]   , picture:"bg-peproni-italy-img"},
+      // {id: 8 , type:'listPizzaItaly' , name:"دیابلو" , price:"183,000T" , detalis:["خمیر ایتالیایی", "رول سوخاری" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون" ]   , picture:"bg-diablo-italy-img"},
     ],
     listPizzaAmerican : [ 
-      {id: 1 , name:" مینی مخصوص" , price:"63,000T" , detalis:["ژامبون" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"] , picture: miniMakhsoseImg},
-      {id: 2 , name:"پپرونی متوسط" , price:"97,000T" , detalis:["پپرونی %90" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "ذرت" , "زیتون" ]  , picture: peproniImg},
-      {id: 3 , name:"سبزیجات متوسط" , price:"83,000T" , detalis:["قارچ" , "فلفل دلمه" , "ذرت" , "گوجه" , "پنیر ترکیبی"]  , picture: roastChickenImg},
-      {id: 4 , name:"چیکن متوسط" , price:"115,000T" , detalis:["مرغ نگینی طعم دار شده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون" , "ذرت"]  , picture: makhsoseImg},
-      {id: 5 , name:"رست چیکن" , price:"105,000T" , detalis:["مرغ رست شده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"]  , picture: goshtVaGharchImg},
-      // {id: 6 , name:"مخصوص متوسط" , price:"87,000T" , detalis:["ژامبون" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"] , picture:"bg-makhsose-img"},
-      // {id: 7 , name:"گوشت و قارچ متوسط" , price:"113,000T" , detalis:["گوشت چرخ کرده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"]  , picture:"bg-gosht-va-gharch-img"},
-      // {id: 8 , name:"رست بیف متوسط" , price:"117,000T" , detalis:["گوشت رست شده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"]  , picture:"bg-roast-beef-img"},
+      {id: 1 , type:'listPizzaAmerican' , name:" مینی مخصوص" , price:"63,000T" , detalis:["ژامبون" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"] , picture: miniMakhsoseImg},
+      {id: 2 , type:'listPizzaAmerican' , name:"پپرونی متوسط" , price:"97,000T" , detalis:["پپرونی %90" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "ذرت" , "زیتون" ]  , picture: peproniImg},
+      {id: 3 , type:'listPizzaAmerican' , name:"سبزیجات متوسط" , price:"83,000T" , detalis:["قارچ" , "فلفل دلمه" , "ذرت" , "گوجه" , "پنیر ترکیبی"]  , picture: roastChickenImg},
+      {id: 4 , type:'listPizzaAmerican' , name:"چیکن متوسط" , price:"115,000T" , detalis:["مرغ نگینی طعم دار شده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون" , "ذرت"]  , picture: makhsoseImg},
+      {id: 5 , type:'listPizzaAmerican' , name:"رست چیکن" , price:"105,000T" , detalis:["مرغ رست شده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"]  , picture: goshtVaGharchImg},
+      // {id: 6 , type:'listPizzaAmerican' , name:"مخصوص متوسط" , price:"87,000T" , detalis:["ژامبون" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"] , picture:"bg-makhsose-img"},
+      // {id: 7 , type:'listPizzaAmerican' , name:"گوشت و قارچ متوسط" , price:"113,000T" , detalis:["گوشت چرخ کرده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"]  , picture:"bg-gosht-va-gharch-img"},
+      // {id: 8 , type:'listPizzaAmerican' , name:"رست بیف متوسط" , price:"117,000T" , detalis:["گوشت رست شده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"]  , picture:"bg-roast-beef-img"},
     ],
     listApetizer : [ 
-      {id: 2 , name:"سیب زمینی ویژه" , price:"87,000T" , detalis:["سیب زمینی 350 گرم" , "ژامبون" , "پنیر" , "قارچ" , "فلفل دلمه" , "زیتون"]  , picture: sibZaminiImg},
-      {id: 3 , name:"سالاد فصل" , price:"25,000T" , detalis:["کاهو" , "خیار" , "گوجه" , "هویج رنده شده"]  , picture: sibZaminiVizheImg},
-      {id: 4 , name:"سالاد سزار" , price:"120,000T" , detalis:["فیله‌ی مرغ" , "کاهو" , "نان تست" , "زیتون" , "سس سزار"]  , picture: saladFaslImg},
-      {id: 5 , name:"سالاد کلم" , price:"35,000T" , detalis:["کلم" , "خیارشور" , "ذرت" , "هویج رنده‌ شده" , "شوید" , "سس مخصوص"]  , picture: saladSezarImg},
-      {id: 6 , name:"پاستای آلفردو مرغ" , price:"140,000T" , detalis:["مخلفات پاستا" , "سس آلفردو" , "فیله مرغ مرینت دارشده" , "قارچ" , "پنه"]  , picture: saladKalamImg},
+      {id: 2,  type:'listApetizer' , name:"سیب زمینی ویژه" , price:"87,000T" , detalis:["سیب زمینی 350 گرم" , "ژامبون" , "پنیر" , "قارچ" , "فلفل دلمه" , "زیتون"]  , picture: sibZaminiImg},
+      {id: 3 , type:'listApetizer' , name:"سالاد فصل" , price:"25,000T" , detalis:["کاهو" , "خیار" , "گوجه" , "هویج رنده شده"]  , picture: sibZaminiVizheImg},
+      {id: 4 , type:'listApetizer' , name:"سالاد سزار" , price:"120,000T" , detalis:["فیله‌ی مرغ" , "کاهو" , "نان تست" , "زیتون" , "سس سزار"]  , picture: saladFaslImg},
+      {id: 5 , type:'listApetizer' , name:"سالاد کلم" , price:"35,000T" , detalis:["کلم" , "خیارشور" , "ذرت" , "هویج رنده‌ شده" , "شوید" , "سس مخصوص"]  , picture: saladSezarImg},
+      {id: 6 , type:'listApetizer' , name:"پاستای آلفردو مرغ" , price:"140,000T" , detalis:["مخلفات پاستا" , "سس آلفردو" , "فیله مرغ مرینت دارشده" , "قارچ" , "پنه"]  , picture: saladKalamImg},
 
     ],
     listDrinks : [
-      // {id: 23 , name:"دلستر قوطی هوفنبرگ مالت" , price:"15,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
-  ],
-    listFried : [
-      {id: 1 , name:"برگر سوخاری" , price:"50,000T" , detalis:["برگر دست ساز 170 گرم" , "نان مک دونالد" , "گوجه" , "کاهو" , "سس مخصوص"]  , picture: burgurSokhariImg },
-      {id: 2 , name:"قارچ سوخاری" , price:"65,000T" , detalis:[]  , picture: gharchSokhariImg},
-      {id: 3 , name:"فیله سوخاری" , price:"95,000T" , detalis:["سه تیکه با مخلفات"]  , picture: fileSokhariImg},
+      // {id: 23  type:'listDrinks' ,, name:"دلستر قوطی هوفنبرگ مالت" , price:"15,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
     ],
+    listFried : [
+      {id: 1 , type:'listFried' , name:"برگر سوخاری" , price:"50,000T" , detalis:["برگر دست ساز 170 گرم" , "نان مک دونالد" , "گوجه" , "کاهو" , "سس مخصوص"]  , picture: burgurSokhariImg },
+      {id: 2 , type:'listFried' , name:"قارچ سوخاری" , price:"65,000T" , detalis:[]  , picture: gharchSokhariImg},
+      {id: 3 , type:'listFried' , name:"فیله سوخاری" , price:"95,000T" , detalis:["سه تیکه با مخلفات"]  , picture: fileSokhariImg},
+    ],
+    showForm : showForm ,
+    setShowForm : setShowForm ,
+    setShowEditForm : setShowEditForm ,
+    EditData : {},
   });
-
 
   // for sub tabs
   const [ShowSub, setShowSub] = useState(window.location.pathname === '/admin/listPizza/listPizzaAmerican' || window.location.pathname === '/admin' ? true : false)
@@ -149,30 +155,28 @@ export default function Admin() {
         listApetizer : state.listApetizer,
         listFried : state.listFried,
         listDrinks : state.listDrinks,
+        setShowForm : state.setShowForm,
+        setShowEditForm : state.setShowEditForm,
+        EditData : state.EditData,
+        showForm : state.showForm,
         dispatch
       }}>
 
-        <AdminHeader ShowSub={ShowSub} setShowSub={setShowSub} setShowAdd={setShowAdd} showAdd={showAdd} />
+        <AdminHeader ShowSub={ShowSub} setShowSub={setShowSub} />
 
-        <div className={`main-content pt-[7.5rem]  ${showAdd ? 'h-screen overflow-hidden': ''}`}>
+        <div className={`main-content pt-[7.5rem]  ${showForm ? 'h-screen overflow-hidden': ''}`}>
           <SlideRoutes>
-            <Route path="/listApetizer" element={<AdminMenu page="listApetizer" />} />
-            <Route path="/listDrink" element={<AdminMenu page="listDrinks" />} />
-            <Route path="/listFried" element={<AdminMenu page="listFried" />} />
-            <Route path="/listBurger" element={<AdminMenu page="listBurger" />} />
-            <Route path="/listSandwich" element={<AdminMenu page="listSandwich" />} />
-            <Route path="/listPizza/listPizzaAmerican" element={<AdminMenu page="listPizzaAmerican" Show={ShowSub} />} />
-            <Route path="/" element={<AdminMenu page="listPizzaItaly" Show={ShowSub} />} />
+            <Route path="/listApetizer" element={<AdminMenu page="listApetizer"  />} />
+            <Route path="/listDrink" element={<AdminMenu page="listDrinks"  />} />
+            <Route path="/listFried" element={<AdminMenu page="listFried"  />} />
+            <Route path="/listBurger" element={<AdminMenu page="listBurger"  />} />
+            <Route path="/listSandwich" element={<AdminMenu page="listSandwich"  />} />
+            <Route path="/listPizza/listPizzaAmerican" element={<AdminMenu page="listPizzaAmerican" Show={ShowSub}  />} />
+            <Route path="/" element={<AdminMenu page="listPizzaItaly" Show={ShowSub}  />} />
           </SlideRoutes>
         </div>
-        <div className=''>
-          {
-            showAdd
-            ? <AddItems setShowAdd={setShowAdd}/>
-            : ''
-          }
 
-        </div>
+        { showForm ? <AddItems showEditForm={showEditForm} /> : '' }
 
       </Context.Provider>
     </div>
