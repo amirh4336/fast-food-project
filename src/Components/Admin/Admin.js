@@ -16,7 +16,7 @@ import AdminReducer from '../../Reducers/AdminReducer';
 // Components 
 import AdminHeader from './AdminHeader/AdminHeader';
 import AddItems from './AdminForm/Form';
-// import EditItems from './Forms/FormEditItems/EditItems';
+import AdminDeleteItem from './AdminDeleteItem/AdminDeleteItem';
 import AdminMenu from './AdminMenu/AdminMenu';
 
 // food image
@@ -78,7 +78,8 @@ export default function Admin() {
 
   const [showForm, setShowForm] = useState(false);
   const [showEditForm, setShowEditForm] = useState(false);
-
+  
+  const [showDeleteItem, setShowDeleteItem] = useState(false);
   
 
   // list foods
@@ -140,6 +141,7 @@ export default function Admin() {
     setShowForm : setShowForm ,
     setShowEditForm : setShowEditForm ,
     EditData : {},
+    setShowDeleteItem : setShowDeleteItem
   });
 
   // for sub tabs
@@ -159,12 +161,13 @@ export default function Admin() {
         setShowEditForm : state.setShowEditForm,
         EditData : state.EditData,
         showForm : state.showForm,
+        setShowDeleteItem : state.setShowDeleteItem,
         dispatch
       }}>
 
         <AdminHeader ShowSub={ShowSub} setShowSub={setShowSub} />
 
-        <div className={`main-content pt-[7.5rem]  ${showForm ? 'h-screen overflow-hidden': ''}`}>
+        <div className={`main-content pt-[7.5rem]  ${showForm || showDeleteItem ? 'h-screen overflow-hidden': ''}`}>
           <SlideRoutes>
             <Route path="/listApetizer" element={<AdminMenu page="listApetizer"  />} />
             <Route path="/listDrink" element={<AdminMenu page="listDrinks"  />} />
@@ -177,6 +180,8 @@ export default function Admin() {
         </div>
 
         { showForm ? <AddItems showEditForm={showEditForm} /> : '' }
+
+        { showDeleteItem ? <AdminDeleteItem /> : '' }
 
       </Context.Provider>
     </div>

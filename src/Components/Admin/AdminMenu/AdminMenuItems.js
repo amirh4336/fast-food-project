@@ -22,7 +22,7 @@ export default function AdminMenuItems({ItemsFood}) {
 	const [state, setState] = useState(false)
 	let rotate = e => setState(! state)
 
-	const {setShowEditForm , setShowForm , dispatch} = useContext(Context);
+	const {setShowEditForm , setShowForm , dispatch , setShowDeleteItem} = useContext(Context);
 
   let ToggleForm = () => {
 		dispatch({ type : 'DataForm' , payload : { Data : {...ItemsFood}} })
@@ -72,7 +72,7 @@ export default function AdminMenuItems({ItemsFood}) {
 
 			</div>
 			<div className="footerForm grid grid-cols-2 w-full gap-6 mb-6 px-4">
-				<button type="button" title='Close' className="bg-rose-500 text-white py-2 text-lg rounded-[4px] flex justify-center">
+				<button type="button" title='Close' onClick={() => setShowDeleteItem(true)} className="bg-rose-500 text-white py-2 text-lg rounded-[4px] flex justify-center">
 					<span className="ml-1">
 						<Trash />
 					</span>
