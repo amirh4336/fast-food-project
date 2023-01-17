@@ -1,6 +1,21 @@
 import React , {useReducer , useState} from 'react';
 import { Route } from 'react-router-dom';
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+// import required modules
+import { Pagination } from "swiper";
+
+import { EffectCreative } from 'swiper';
+import { useSwiper } from 'swiper/react';
+
+import 'swiper/css/effect-fade';
+
+import './styles.css';
+
 import SlideRoutes from 'react-slide-routes';
 // Context
 import Context from '../Context/Context';
@@ -12,6 +27,19 @@ import Reducer from '../Reducers/Reducer';
 import Header from './Header/Header';
 import Menu from './Menu/Menu';
 import Footer from './Footer/Footer';
+
+// Custom Hooks
+import useToggleHeader from '../CustomHooks/UseToggleHeader';
+
+
+// tab food
+import apetizer from './../Assets/Icons/apetizer.png';
+import burger from './../Assets/Icons/burger.png';
+import drinks from './../Assets/Icons/drinks.png';
+import fried from './../Assets/Icons/fried.png';
+import pizza from './../Assets/Icons/pizza.png';
+import sandwich from './../Assets/Icons/sandwich.png';
+
 
 // food image
   // burger
@@ -60,8 +88,6 @@ import saladKalamImg from '../Assets/Images/foods-min/apetizer/salad-kalam-img.j
 import burgurSokhariImg from "../Assets/Images/foods-min/fried/burgur-sokhari-img.jpg";
 import gharchSokhariImg from "../Assets/Images/foods-min/fried/gharch-sokhari-img.jpg";
 import fileSokhariImg from "../Assets/Images/foods-min/fried/file-sokhari-img.jpg";
-
-
 
 function App() {
   // for dark mode
@@ -162,8 +188,43 @@ function App() {
   // for sub tabs
   const [ShowSub, setShowSub] = useState(window.location.pathname === '/listPizza/listPizzaAmerican' || window.location.pathname === '/listPizza/listPizzaItaly' ? true : false)
 
+  // movment for header
+  const headerState = useToggleHeader();
 
-
+  const pagination = {
+    clickable: true,
+    renderBullet: function (index, className) {
+      let imageUrl
+      switch (index) {
+        case 0:
+          imageUrl = apetizer
+          break;
+        case 1:
+          imageUrl = fried
+          break;
+        case 2:
+          imageUrl = burger
+          break;
+        case 3:
+          imageUrl = sandwich
+          break;
+        case 4:
+            imageUrl = drinks
+          break;
+        case 5:
+            imageUrl = pizza
+          break;
+      
+        default:
+          break;
+      }
+      return (
+        `<div class="rounded-lg flex flex-col swiper-pagination-bullet" >
+            <img src="${imageUrl}" />
+          </div>`
+      )
+    },
+  };
 
   return (
     <main className="min-h-screen font-['Vazir'] bg-[#F2F1EE] text-[#052130] dark:bg-[#052130] dark:text-[#F2F1EE]  " >
@@ -177,16 +238,22 @@ function App() {
         listDrinks : state.listDrinks,
         dispatch
       }}>
-        <Header Show={ShowSub} setShow={setShowSub} />
-        <SlideRoutes>
-          <Route path="/listApetizer" element={<Menu page="listApetizer" />} />
+        <Header Show={ShowSub} setShow={setShowSub} headerState={headerState} />
+        <Swiper className={`mySwiper relative ${headerState ? '' : 'showHeader'}`}pagination={pagination} modules={[Pagination]}>
+          <SwiperSlide>{<Menu page="listApetizer" />}</SwiperSlide>
+          <SwiperSlide>{<Menu page="listFried" />}</SwiperSlide>
+          <SwiperSlide>{<Menu page="listBurger" />}</SwiperSlide>
+          <SwiperSlide>{<Menu page="listSandwich" />}</SwiperSlide>
+          <SwiperSlide>{<Menu page="listPizzaItaly" Show={ShowSub} />}</SwiperSlide>
+          <SwiperSlide>{<Menu page="listPizzaAmerican" Show={ShowSub} />}</SwiperSlide>
+          {/* <Route path="/listApetizer" element={<Menu page="listApetizer" />} />
           <Route path="/listDrink" element={<Menu page="listDrinks" />} />
           <Route path="/listFried" element={<Menu page="listFried" />} />
           <Route path="/" element={<Menu page="listBurger" />} />
           <Route path="/listSandwich" element={<Menu page="listSandwich" />} />
           <Route path="/listPizza/listPizzaItaly" element={<Menu page="listPizzaItaly" Show={ShowSub} />} />
-          <Route path="/listPizza/listPizzaAmerican" element={<Menu page="listPizzaAmerican" Show={ShowSub} />} />
-        </SlideRoutes>
+          <Route path="/listPizza/listPizzaAmerican" element={<Menu page="listPizzaAmerican" Show={ShowSub} />} /> */}
+        </Swiper>
         <Footer />
       </Context.Provider>
     </main>
