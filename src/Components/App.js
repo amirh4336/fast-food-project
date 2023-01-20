@@ -195,36 +195,65 @@ function App() {
     clickable: true,
     renderBullet: function (index, className) {
       let imageUrl
+      let tabName
       switch (index) {
         case 0:
           imageUrl = apetizer
+          tabName = "پیش غذا"
           break;
         case 1:
           imageUrl = fried
+          tabName = "سوخاری"
           break;
         case 2:
           imageUrl = burger
+          tabName = "برگر"
           break;
         case 3:
           imageUrl = sandwich
+          tabName = "ساندویچ"
           break;
         case 4:
-            imageUrl = drinks
+          imageUrl = drinks
+          tabName = "نوشیدنی"
           break;
         case 5:
-            imageUrl = pizza
+          imageUrl = pizza
+          tabName = "پیتزا"
+        break;
+      
+        default:
+          break;
+      }
+      return (
+        `<div class="rounded-lg flex flex-col justify-center swiper-pagination-bullet " >
+          <img class="rounded-lg border max-h-[90px mx-auto" alt="${tabName}" src="${imageUrl}" />
+          <p class="text-[.75rem] text-center p-0 m-0">${tabName}</p>
+        </div>`
+      )
+    },
+  };
+  const pagination2 = {
+    clickable: true,
+    renderBullet: function (index, className) {
+      let tabName
+      switch (index) {
+        case 0:
+          tabName = "ایتالیایی"
+          break;
+        case 1:
+          tabName = "آمریکایی"
           break;
       
         default:
           break;
       }
       return (
-        `<div class="rounded-lg flex flex-col swiper-pagination-bullet" >
-            <img src="${imageUrl}" />
-          </div>`
+        `<span class="rounded-xl text-base w-1/2 text-center border ${className}" >${tabName}</span>`
       )
     },
   };
+
 
   return (
     <main className="min-h-screen font-['Vazir'] bg-[#F2F1EE] text-[#052130] dark:bg-[#052130] dark:text-[#F2F1EE]  " >
@@ -245,7 +274,12 @@ function App() {
           <SwiperSlide>{<Menu page="listBurger" />}</SwiperSlide>
           <SwiperSlide>{<Menu page="listSandwich" />}</SwiperSlide>
           <SwiperSlide>{<Menu page="listPizzaItaly" Show={ShowSub} />}</SwiperSlide>
-          <SwiperSlide>{<Menu page="listPizzaAmerican" Show={ShowSub} />}</SwiperSlide>
+          <SwiperSlide>
+            <Swiper className="subSwiper" pagination={pagination2} modules={[Pagination]}>
+              <SwiperSlide>{<Menu page="listPizzaItaly" Show={ShowSub} />}</SwiperSlide>
+              <SwiperSlide>{<Menu page="listPizzaAmerican" Show={ShowSub} />}</SwiperSlide>
+            </Swiper>
+          </SwiperSlide>
           {/* <Route path="/listApetizer" element={<Menu page="listApetizer" />} />
           <Route path="/listDrink" element={<Menu page="listDrinks" />} />
           <Route path="/listFried" element={<Menu page="listFried" />} />
