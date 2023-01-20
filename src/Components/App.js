@@ -1,5 +1,5 @@
 import React , {useReducer , useState} from 'react';
-import { Route } from 'react-router-dom';
+import { Route , Routes  , Link} from 'react-router-dom';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,7 +14,7 @@ import { useSwiper } from 'swiper/react';
 
 import 'swiper/css/effect-fade';
 
-import './styles.css';
+import './styles.scss';
 
 import SlideRoutes from 'react-slide-routes';
 // Context
@@ -25,6 +25,7 @@ import Reducer from '../Reducers/Reducer';
 
 // Component
 import Header from './Header/Header';
+import SubTabFood from './Header/TabFoods/SubTab/SubTabFood';
 import Menu from './Menu/Menu';
 import Footer from './Footer/Footer';
 
@@ -101,9 +102,7 @@ function App() {
  // list foods
   const [state , dispatch] = useReducer(Reducer , {
     listBurger : [
-      // {id:1 , name:"همبرگر مرغ" , price:"93,000T" , detalis:["مرغ 180 گرم" , "سبزیجات" , "سس قارچ"]  , picture:"bg-none"},
       {id:2 , name:"همبرگر مخصوص" , price:"59,000T" , detalis:["برگر 60% کارخانه ،مام" , "سبزیجات"]  , picture: burgerMakhsoseImg},
-      // {id:3 , name:"رویال برگر" , price:"78,000T" , detalis:["برگر 60% کارخانه ،مام" , "سبزیجات"]  , picture:"bg-none"},
       {id:4 , name:"چیز برگر" , price:"69,000T" , detalis:["برگر۶۰٪ کارخانه" , "پنیر گودا" , "سبزیجات"]  , picture: chizeBurgerImg },
       {id:5 , name:"همبرگر دست ساز" , price:"97,000T" , detalis:["گوشت 170 گرم" , "سس قارچ" , "سبزیجات"]  , picture: burgerDastSazImg },
       {id:6 , name:"همبرگر دست ساز ویژه" , price:"113,000T" , detalis:["گوشت 170 گرم" , "قارچ" , "پنیر" , "سبزیجات"]  , picture:burgerDastSazVizheImg},
@@ -115,13 +114,6 @@ function App() {
       {id: 3 , name:"کوکتل بندری" , price:"57,000T" , detalis:["کوکتل %70" , "پیاز" , "فلفل دلمه" , "ادویه مخصوص فرحزاد"]  , picture: bandariImg},
       {id: 4 , name:"کوکتل بندری ویژه" , price:"69,000T" , detalis:["کوکتل %70" , "پیاز" , "فلفل دلمه" , "ادویه مخصوص فرحزاد", "قارچ" , "سبزیجات" , "پنیر"]  , picture: bandariVizhemg},
       {id: 5 , name:"هات داگ ساده" , price:"57,000T" , detalis:["هات داگ %75" , "سبزیجات"]  , picture: hotdogImg},
-      // {id: 6 , name:"هات داگ رویال" , price:"73,000T" , detalis:["هات داگ %70" , "قارچ" , "پنیر" , "سبزیجات"]  , picture:"bg-hotdog-royal-img"},
-      // {id: 7 , name:"فلافل" , price:"40,000T" , detalis:["پنج عدد قرص فلافل دست ساز " , "کاهو یا کلم به دلخواه مشتری"]  , picture:"bg-falafel-img"},
-      // {id: 8 , name:"فلافل ویژه" , price:"55,000T" , detalis:["پنج عدد قرص فلافل دست ساز " , "کاهو یا کلم به دلخواه مشتری" , "قارچ" , "پنیر"]  , picture:"bg-falafel-vizhe-img"},
-      // {id: 9 , name:"ساندویچ مرغ" , price:"95,000T" , detalis:["مرغ رست شده" , "قارچ" , "پنیر"]  , picture:"bg-sandwich-morgh-img"},
-      // {id: 10 , name:"هات داگ تنوری" , price:"125,000T" , detalis:["هات داگ" , "سه ورق ژامبون" , "سس قارچ" , "سیب زمینی" , "چیپس" , "پنیر"]  , picture:"bg-hotdog-tanori-img"},
-      // {id: 11 , name:"ساندویچ پیتزایی" , price:"63,000T" , detalis:["ژامبون" , "قارچ" , "پنیر" , "فلفل دلمه"]  , picture:"bg-none"},
-      // {id: 12 , name:"پپرونی تنوری" , price:"145,000T" , detalis:["پپرونی 30 ورق" , "قارچ" , "پنیر" , "هات داگ" , "سبزیجات"]  , picture:"bg-peproni-tanori-img"},
     ],
     listPizzaItaly : [ 
       {id: 1 , name:"مخصوص" , price:"170,000T" , detalis:["ژامبون" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"]  , picture: makhsoseItalyImg},
@@ -129,9 +121,6 @@ function App() {
       {id: 3 , name:"رست چیکن" , price:"197,000T" , detalis:["مرغ رست شده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"]  , picture: roastBeefItalyImg},
       {id: 4 , name:"رست بیف" , price:"217,000T" , detalis:["گوشت رست شده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"]   , picture: chickenItalyImg},
       {id: 5 , name:"چیکن" , price:"210,000T" , detalis:["مرغ نگینی طعم دار شده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون" , "ذرت"]   , picture: peproniItalyImg},
-      // {id: 6 , name:"سبزیجات" , price:"167,000T" , detalis:["قارچ" , "فلفل دلمه" , "ذرت" , "گوجه" , "پنیر ترکیبی"]   , picture:"bg-hotdog-royal-image"},
-      // {id: 7 , name:"پپرونی" , price:"183,000T" , detalis:["پپرونی %90" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "ذرت" , "زیتون" ]   , picture:"bg-peproni-italy-img"},
-      // {id: 8 , name:"دیابلو" , price:"183,000T" , detalis:["خمیر ایتالیایی", "رول سوخاری" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون" ]   , picture:"bg-diablo-italy-img"},
     ],
     listPizzaAmerican : [ 
       {id: 1 , name:" مینی مخصوص" , price:"63,000T" , detalis:["ژامبون" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"] , picture: miniMakhsoseImg},
@@ -139,43 +128,19 @@ function App() {
       {id: 3 , name:"سبزیجات متوسط" , price:"83,000T" , detalis:["قارچ" , "فلفل دلمه" , "ذرت" , "گوجه" , "پنیر ترکیبی"]  , picture: roastChickenImg},
       {id: 4 , name:"چیکن متوسط" , price:"115,000T" , detalis:["مرغ نگینی طعم دار شده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون" , "ذرت"]  , picture: makhsoseImg},
       {id: 5 , name:"رست چیکن" , price:"105,000T" , detalis:["مرغ رست شده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"]  , picture: goshtVaGharchImg},
-      // {id: 6 , name:"مخصوص متوسط" , price:"87,000T" , detalis:["ژامبون" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"] , picture:"bg-makhsose-img"},
-      // {id: 7 , name:"گوشت و قارچ متوسط" , price:"113,000T" , detalis:["گوشت چرخ کرده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"]  , picture:"bg-gosht-va-gharch-img"},
-      // {id: 8 , name:"رست بیف متوسط" , price:"117,000T" , detalis:["گوشت رست شده" , "قارچ" , "پنیر ترکیبی" , "فلفل دلمه" , "زیتون"]  , picture:"bg-roast-beef-img"},
     ],
     listApetizer : [ 
-      // {id: 1 , name:"سیب زمینی" , price:"50,000T" , detalis:[] , picture:"bg-sib-zamini-img"},
       {id: 2 , name:"سیب زمینی ویژه" , price:"87,000T" , detalis:["سیب زمینی 350 گرم" , "ژامبون" , "پنیر" , "قارچ" , "فلفل دلمه" , "زیتون"]  , picture: sibZaminiImg},
       {id: 3 , name:"سالاد فصل" , price:"25,000T" , detalis:["کاهو" , "خیار" , "گوجه" , "هویج رنده شده"]  , picture: sibZaminiVizheImg},
       {id: 4 , name:"سالاد سزار" , price:"120,000T" , detalis:["فیله‌ی مرغ" , "کاهو" , "نان تست" , "زیتون" , "سس سزار"]  , picture: saladFaslImg},
       {id: 5 , name:"سالاد کلم" , price:"35,000T" , detalis:["کلم" , "خیارشور" , "ذرت" , "هویج رنده‌ شده" , "شوید" , "سس مخصوص"]  , picture: saladSezarImg},
       {id: 6 , name:"پاستای آلفردو مرغ" , price:"140,000T" , detalis:["مخلفات پاستا" , "سس آلفردو" , "فیله مرغ مرینت دارشده" , "قارچ" , "پنه"]  , picture: saladKalamImg},
-      // {id: 7 , name:"پاستای مارینارا گوشت'" , price:"150,000T" , detalis:["پاستا" , "سس مارینارا" , "قارچ" , "گوشت قرمز"]  , picture:"bg-pasta-marina-img"},
-      // {id: 8 , name:"نان سیر" , price:"90,000T" , detalis:[]  , picture:"bg-nane-sir-img"},
     ],
     listDrinks : [
-      // {id: 1 , name:"بطری میراندا" , price:"8,000T" , detalis:[]  , picture:"bg-sib-zamini-image"},
-      // {id: 3 , name:"بطری پپسی" , price:"8,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
-      // {id: 4 , name:"بطری سون اپ" , price:"8,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
-      // {id: 5 , name:"قوطی پپسی" , price:"12,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
-      // {id: 6 , name:"قوطی میراندا" , price:"12,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
-      // {id: 7 , name:"قوطی سون اپ" , price:"12,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
-      // {id: 8 , name:"نوشابه خانواده پپسی" , price:"20,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
-      // {id: 9 , name:"نوشابه خانواده سون اپ" , price:"20,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
-      // {id: 10 , name:"نوشابه خانواده میراندا" , price:"20,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
-      // {id: 11 , name:"دلستر لیمو" , price:"21,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
-      // {id: 12 , name:"دلستر هلو" , price:"21,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
-      // {id: 13 , name:"دلستر استوایی" , price:"21,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
-      // {id: 14 , name:"دلستر مالت" , price:"21,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
-      // {id: 15 , name:"موهیتو" , price:"21,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
-      // {id: 16 , name:"دلستر کاکتوس" , price:"21,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
-      // {id: 17 , name:"دلستر لیمو شیشه کوچیک" , price:"15,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
-      // {id: 18 , name:"دلستر استوایی کوچیک" , price:"15,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
-      // {id: 19 , name:"دلستر هلو کوچیک" , price:"15,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
-      // {id: 20 , name:"دلستر کاکتوس کوچیک" , price:"17,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
-      // {id: 21 , name:"موهیتو کوچیک" , price:"17,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
-      // {id: 22 , name:"دلستر قوطی هوفنبرگ لیمو" , price:"15,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
-      // {id: 23 , name:"دلستر قوطی هوفنبرگ مالت" , price:"15,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
+      {id: 1 , name:"بطری میراندا" , price:"8,000T" , detalis:[]  , picture:"bg-sib-zamini-image"},
+      {id: 3 , name:"بطری پپسی" , price:"8,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
+      {id: 4 , name:"بطری سون اپ" , price:"8,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
+      {id: 5 , name:"قوطی پپسی" , price:"12,000T" , detalis:[]  , picture:"bg-sib-zamini-vizhe-image"},
   ],
     listFried : [
       {id: 1 , name:"برگر سوخاری" , price:"50,000T" , detalis:["برگر دست ساز 170 گرم" , "نان مک دونالد" , "گوجه" , "کاهو" , "سس مخصوص"]  , picture: burgurSokhariImg },
@@ -186,7 +151,9 @@ function App() {
 
 
   // for sub tabs
-  const [ShowSub, setShowSub] = useState(window.location.pathname === '/listPizza/listPizzaAmerican' || window.location.pathname === '/listPizza/listPizzaItaly' ? true : false)
+  const [ShowSub, setShowSub] = useState(false)
+
+  let toggleSub = () =>{}
 
   // movment for header
   const headerState = useToggleHeader();
@@ -196,65 +163,52 @@ function App() {
     renderBullet: function (index, className) {
       let imageUrl
       let tabName
+      let id
       switch (index) {
         case 0:
           imageUrl = apetizer
           tabName = "پیش غذا"
+          id = "apetizer"
           break;
         case 1:
           imageUrl = fried
           tabName = "سوخاری"
+          id = "fried"
           break;
         case 2:
           imageUrl = burger
           tabName = "برگر"
+          id = "burger"
           break;
         case 3:
           imageUrl = sandwich
           tabName = "ساندویچ"
+          id = "sandwich"
           break;
         case 4:
           imageUrl = drinks
           tabName = "نوشیدنی"
+          id = "drinks"
           break;
         case 5:
           imageUrl = pizza
           tabName = "پیتزا"
+          id = "pizza"
         break;
       
         default:
           break;
       }
       return (
-        `<div class="rounded-lg flex flex-col justify-center swiper-pagination-bullet " >
-          <img class="rounded-lg border max-h-[90px mx-auto" alt="${tabName}" src="${imageUrl}" />
+        `<div id="${id}" class="rounded-lg flex flex-col justify-center swiper-pagination-bullet " >
+          <img class="rounded-lg border max-h-[90px] mx-auto" alt="${tabName}" src="${imageUrl}" />
           <p class="text-[.75rem] text-center p-0 m-0">${tabName}</p>
         </div>`
       )
     },
   };
-  const pagination2 = {
-    clickable: true,
-    renderBullet: function (index, className) {
-      let tabName
-      switch (index) {
-        case 0:
-          tabName = "ایتالیایی"
-          break;
-        case 1:
-          tabName = "آمریکایی"
-          break;
-      
-        default:
-          break;
-      }
-      return (
-        `<span class="rounded-xl text-base w-1/2 text-center border ${className}" >${tabName}</span>`
-      )
-    },
-  };
 
-
+  
   return (
     <main className="min-h-screen font-['Vazir'] bg-[#F2F1EE] text-[#052130] dark:bg-[#052130] dark:text-[#F2F1EE]  " >
       <Context.Provider  value={{
@@ -268,24 +222,33 @@ function App() {
         dispatch
       }}>
         <Header Show={ShowSub} setShow={setShowSub} headerState={headerState} />
-        <Swiper className={`mySwiper relative ${headerState ? '' : 'showHeader'}`}pagination={pagination} modules={[Pagination]}>
+        <div className={`grid grid-cols-2 z-10 p-3 fixed top-[21.5rem] bg-[#F2F1EE] text-[#052130] dark:bg-[#052130] dark:text-[#F2F1EE] w-full text-center transition-all duration-300 ${ headerState ? 'delay-300' : ' -translate-y-[5rem] delay-100'} ${ ShowSub ? '' : '-translate-y-[10rem]'}`}>
+          <SubTabFood />
+        </div>
+        <Swiper onClick={() => console.log('asd')} className={`mySwiper relative ${headerState ? '' : 'showHeader'}`} pagination={pagination} modules={[Pagination]}>
           <SwiperSlide>{<Menu page="listApetizer" />}</SwiperSlide>
           <SwiperSlide>{<Menu page="listFried" />}</SwiperSlide>
           <SwiperSlide>{<Menu page="listBurger" />}</SwiperSlide>
           <SwiperSlide>{<Menu page="listSandwich" />}</SwiperSlide>
           <SwiperSlide>{<Menu page="listPizzaItaly" Show={ShowSub} />}</SwiperSlide>
-          <SwiperSlide>
+          <SwiperSlide>{
+            <SlideRoutes>
+              <Route path="/listPizza/listPizzaAmerican" element={<Menu page="listPizzaAmerican" Show={ShowSub} />} />
+              <Route path="/" element={<Menu page="listPizzaItaly" Show={ShowSub} />} />
+            </SlideRoutes>
+            }</SwiperSlide>
+          {/* <SwiperSlide>
             <Swiper className="subSwiper" pagination={pagination2} modules={[Pagination]}>
               <SwiperSlide>{<Menu page="listPizzaItaly" Show={ShowSub} />}</SwiperSlide>
               <SwiperSlide>{<Menu page="listPizzaAmerican" Show={ShowSub} />}</SwiperSlide>
             </Swiper>
-          </SwiperSlide>
+          </SwiperSlide> */}
           {/* <Route path="/listApetizer" element={<Menu page="listApetizer" />} />
           <Route path="/listDrink" element={<Menu page="listDrinks" />} />
           <Route path="/listFried" element={<Menu page="listFried" />} />
           <Route path="/" element={<Menu page="listBurger" />} />
-          <Route path="/listSandwich" element={<Menu page="listSandwich" />} />
-          <Route path="/listPizza/listPizzaItaly" element={<Menu page="listPizzaItaly" Show={ShowSub} />} />
+          <Route path="/listSandwich" element={<Menu page="listSandwich" />} /> */}
+          {/* <Route path="/listPizza/listPizzaItaly" element={<Menu page="listPizzaItaly" Show={ShowSub} />} />
           <Route path="/listPizza/listPizzaAmerican" element={<Menu page="listPizzaAmerican" Show={ShowSub} />} /> */}
         </Swiper>
         <Footer />
