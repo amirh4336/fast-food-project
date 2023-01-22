@@ -151,9 +151,8 @@ function App() {
 
 
   // for sub tabs
-  const [ShowSub, setShowSub] = useState(false)
+  const [ShowSub, setShowSub] = useState('')
 
-  let toggleSub = () =>{}
 
   // movment for header
   const headerState = useToggleHeader();
@@ -195,20 +194,45 @@ function App() {
           tabName = "پیتزا"
           id = "pizza"
         break;
+        case 6:
+          imageUrl = pizza
+          tabName = "پیتزا"
+          id = "American"
+        break;
       
         default:
           break;
       }
       return (
-        `<div id="${id}" class="rounded-lg flex flex-col justify-center swiper-pagination-bullet " >
-          <img class="rounded-lg border max-h-[90px] mx-auto" alt="${tabName}" src="${imageUrl}" />
-          <p class="text-[.75rem] text-center p-0 m-0">${tabName}</p>
-        </div>`
+        index === 5 || index === 6
+        ? index === 5
+          ? `<div id="${id}" class="swiper-pagination-bullet">
+              <div  class="rounded-lg flex flex-col justify-center" >
+                <img class="rounded-lg border max-h-[90px] mx-auto" alt="${tabName}" src="${imageUrl}" />
+                <p class="text-[.75rem] text-center p-0 m-0">${tabName}</p>
+              </div>
+              <span id="Italy" class="absolute border text-center w-1/2 rounded-full  bg-[#F2F1EE] text-[#052130] bottom-[7rem] -z-10 right-0">ایتالیایی</span>
+            </div>`
+          : `<span id="${id}" class="absolute border text-center w-1/2 rounded-full bg-[#F2F1EE] text-[#052130] swiper-pagination-bullet bottom-[7rem] left-0 z-0">آمریکایی</span>`
+        : `<div id="${id}" class="rounded-lg flex flex-col justify-center swiper-pagination-bullet " >
+            <img class="rounded-lg border max-h-[90px] mx-auto" alt="${tabName}" src="${imageUrl}" />
+            <p class="text-[.75rem] text-center p-0 m-0">${tabName}</p>
+          </div>`
+        
       )
     },
   };
-
   
+  var tabPizaa = document.getElementById("pizza")
+  var SubTabAmerican = document.getElementById("American")
+  var SubTabItaly = document.getElementById("Italy")
+  setTimeout(() => {
+    setShowSub(false)
+  }, 300);
+  if (SubTabAmerican?.classList.contains('swiper-pagination-bullet-active')) {
+    tabPizaa.classList.add('sibling')
+    console.log(tabPizaa);
+  }
   return (
     <main className="min-h-screen font-['Vazir'] bg-[#F2F1EE] text-[#052130] dark:bg-[#052130] dark:text-[#F2F1EE]  " >
       <Context.Provider  value={{
@@ -222,21 +246,14 @@ function App() {
         dispatch
       }}>
         <Header Show={ShowSub} setShow={setShowSub} headerState={headerState} />
-        <div className={`grid grid-cols-2 z-10 p-3 fixed top-[21.5rem] bg-[#F2F1EE] text-[#052130] dark:bg-[#052130] dark:text-[#F2F1EE] w-full text-center transition-all duration-300 ${ headerState ? 'delay-300' : ' -translate-y-[5rem] delay-100'} ${ ShowSub ? '' : '-translate-y-[10rem]'}`}>
-          <SubTabFood />
-        </div>
-        <Swiper onClick={() => console.log('asd')} className={`mySwiper relative ${headerState ? '' : 'showHeader'}`} pagination={pagination} modules={[Pagination]}>
+        <Swiper className={`mySwiper relative ${headerState ? '' : 'showHeader'}`} pagination={pagination} modules={[Pagination]}>
           <SwiperSlide>{<Menu page="listApetizer" />}</SwiperSlide>
           <SwiperSlide>{<Menu page="listFried" />}</SwiperSlide>
           <SwiperSlide>{<Menu page="listBurger" />}</SwiperSlide>
           <SwiperSlide>{<Menu page="listSandwich" />}</SwiperSlide>
+          <SwiperSlide>{<Menu page="listDrinks" />}</SwiperSlide>
           <SwiperSlide>{<Menu page="listPizzaItaly" Show={ShowSub} />}</SwiperSlide>
-          <SwiperSlide>{
-            <SlideRoutes>
-              <Route path="/listPizza/listPizzaAmerican" element={<Menu page="listPizzaAmerican" Show={ShowSub} />} />
-              <Route path="/" element={<Menu page="listPizzaItaly" Show={ShowSub} />} />
-            </SlideRoutes>
-            }</SwiperSlide>
+          <SwiperSlide>{<Menu page="listPizzaAmerican" Show={ShowSub} />}</SwiperSlide>
           {/* <SwiperSlide>
             <Swiper className="subSwiper" pagination={pagination2} modules={[Pagination]}>
               <SwiperSlide>{<Menu page="listPizzaItaly" Show={ShowSub} />}</SwiperSlide>
