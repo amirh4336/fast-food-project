@@ -2,20 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './Components/App';
-import Admin from './Components/Admin/Admin';
-import Login from './Components/Admin/Auth/Login';
+// import Admin from './Components/Admin/Admin';
+// import Login from './Components/Admin/Auth/Login';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter , Route , Routes} from 'react-router-dom';
+// import { BrowserRouter , Route , Routes} from 'react-router-dom';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="*" element={<App />} />
-      <Route path="/admin/*" element={<Admin />} />
-      <Route path="/login" element={<Login />} />
-    </Routes>
-  </BrowserRouter>
+  <App />
 );
 
 document.getElementsByTagName('html')[0].setAttribute("dir", "rtl");

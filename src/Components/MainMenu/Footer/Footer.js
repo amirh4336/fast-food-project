@@ -1,7 +1,7 @@
 import {memo} from 'react';
 
 // svg
-import { Phone , Instagram } from '../../Assets/Logos/Logos.js';
+import { Phone , Instagram } from '../../../Assets/Logos/Logos.js';
 
 
 export default memo(function Footer() {

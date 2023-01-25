@@ -1,23 +1,59 @@
-
-
+import {useState} from 'react';
+import axios from 'axios';
 
 export default function Login() {
 
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
+
+  let toggleAuth = (e) => {
+    e.preventDefault();
+    // ajax 
+    // let login = { phone : phone, password : password };
+    // console.log(login);
+    const formData = new FormData();
+    formData.append('phone' , phone )
+    formData.append('password' , password )
+    console.log(Object.fromEntries(formData));
+    axios.post(`http://localhost:2000/api/v1/users/login` , formData , {headers: { 'content-type': 'multipart/form-data' }})
+      .then(response => console.log(response.data))
+      .catch(err => {
+          if (err.response){
+            window.alert(err.response.data.message)
+          //do something
+          
+          }else if(err.request){
+          
+          //do something else
+          
+          }else if(err.message){
+          
+          //do something other than the other two
+          
+          }
+      })
+    // 
+  }
+
   return(
     <section className="bg-gradient-to-r from-slate-700 to-cyan-600 w-full px-4 sm:px-8 h-[100vh] flex justify-center items-center font-['Vazir']">
-      <form type="submit" className="bg-white w-full sm:max-w-[380px] flex flex-col items-center p-4 rounded-[15px] shadow-md mb-24">
+      <form type="submit" onSubmit={toggleAuth} className="bg-white w-full sm:max-w-[380px] flex flex-col items-center p-4 rounded-[15px] shadow-md mb-24">
         <h2 className="text-2xl font-bold mt-4">ورود به پنل</h2>
         <div className="form-content w-full my-8 flex flex-col">
 
           <label>
-            <p className="text-lg">نام کاربری</p>
+            <p className="text-lg">شماره تلفن</p>
             <input className="border w-full p-3 rounded-md mt-2 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 
             disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 
             focus:invalid:ring-pink-500 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
             peer" 
-            type="text" placeholder="نام کاربری خود را وارد کنید" required />
+            type="text"
+            name="phoneId"
+            placeholder="نام کاربری خود را وارد کنید"
+            onChange={(e) => {setPhone(e.target.value)}}
+            required />
             <p className="mt-2 invisible peer-invalid:visible text-pink-600 text-sm">
-              لطفا نام کاربری خود را وارد کنید.
+              لطفا شماره تلفن خود را وارد کنید.
             </p>
           </label>
 
@@ -26,7 +62,10 @@ export default function Login() {
             <input className="border w-full p-3 rounded-md mt-2 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 
             disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 
             focus:invalid:ring-pink-500 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 peer" 
-            type="password" placeholder="رمز عبور خود را وارد کنید" name="password" required />
+            type="password" placeholder="رمز عبور خود را وارد کنید"
+            name="password" 
+            onChange={(e) => {setPassword(e.target.value)}}
+            required />
             <p className="mt-2 invisible peer-invalid:visible text-pink-600 text-sm">
               لطفا رمز عبور را وارد کنید.
             </p>

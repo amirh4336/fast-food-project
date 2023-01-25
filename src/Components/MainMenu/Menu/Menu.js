@@ -1,7 +1,7 @@
 import {useContext , memo} from 'react';
 
 // context
-import Context from '../../Context/Context';
+import Context from '../../../Context/Context';
 
 // food images
 

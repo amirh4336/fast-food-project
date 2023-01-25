@@ -1,0 +1,68 @@
+.transform-style {
+  transform-style: preserve-3d;
+}
+
+.translate-z-0 {
+  transform: translateZ(0.5rem);
+}
+
+.translate-z {
+  transform: translateZ(2rem);
+}
+
+.translate-z-1 {
+  transform: translateZ(3rem);
+}
+
+.backface {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y {
+  transform: rotateY(0.5turn);
+}
+
+@-webkit-keyframes flip {
+  100% {
+    z-index: 1;
+    transform: rotateY(0.5turn);
+  }
+}
+
+@keyframes flip {
+  100% {
+    z-index: 1;
+    transform: rotateY(0.5turn);
+  }
+}
+.flip {
+  -webkit-animation: flip 0.75s linear forwards;
+          animation: flip 0.75s linear forwards;
+}
+
+@-webkit-keyframes reverse-flip {
+  0% {
+    z-index: 1;
+    transform: rotateY(-0.5turn);
+  }
+  100% {
+    z-index: 1;
+    transform: rotateY(0turn);
+  }
+}
+
+@keyframes reverse-flip {
+  0% {
+    z-index: 1;
+    transform: rotateY(-0.5turn);
+  }
+  100% {
+    z-index: 1;
+    transform: rotateY(0turn);
+  }
+}
+.reverse-flip {
+  -webkit-animation: reverse-flip 0.75s linear forwards;
+          animation: reverse-flip 0.75s linear forwards;
+}/*# sourceMappingURL=ItemsFood.css.map */

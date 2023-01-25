@@ -1,4 +1,4 @@
-import {Check} from '../../Assets/Logos/Logos'
+import {Check} from '../../../Assets/Logos/Logos'
 
 
 

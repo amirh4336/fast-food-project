@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 // svg
-import { Sun , Moon , BurgerList } from '../../Assets/Logos/Logos.js';
+import { Sun , Moon , BurgerList } from '../../../Assets/Logos/Logos.js';
 
 export default function Header({headerState}) {
 

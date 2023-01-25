@@ -1,7 +1,7 @@
 import {useState} from 'react';
 
 // //svg
-import {BackIcon} from '../../Assets/Logos/Logos';
+import {BackIcon} from '../../../Assets/Logos/Logos';
 
 // Style
 import './ItemsFood.scss';
