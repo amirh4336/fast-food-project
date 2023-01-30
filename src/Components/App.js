@@ -1,7 +1,8 @@
 import { BrowserRouter , Route , Routes} from 'react-router-dom';
+import {useReducer} from 'react';
 
-// Context
-import Context from '../Context/Context';
+// AuthContext
+import AuthContext from '../Context/AuthContext';
 // Reducers
 import AuthReducer from '../Reducers/Reducer';
 
@@ -11,9 +12,11 @@ import Admin from './Admin/Admin';
 import Login from './Admin/Auth/Login';
 
 export default function App() {
+
+  const [state , dispatch] = useReducer(AuthReducer  , {dataToken : ''})
   
   return(
-    <Context.Provider value={{}}>
+    <AuthContext.Provider value={{dataToken : state.dataToken , dispatch }}>
       <BrowserRouter>
         <Routes>
           <Route path="*" element={<MainMenu />} />
@@ -21,6 +24,6 @@ export default function App() {
           <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
-    </Context.Provider>
+    </AuthContext.Provider>
   )
 }

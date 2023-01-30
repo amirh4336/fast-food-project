@@ -1,22 +1,31 @@
-import {useState} from 'react';
+import { Navigate} from "react-router-dom";
+import {useState , useContext} from 'react';
 import axios from 'axios';
+
+// context
+import AuthContext from '../../../Context/AuthContext';
 
 export default function Login() {
 
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
-
+  const [user, setUser] = useState(false);
+  // const [dispatch] = useContext(AuthContext);
+  if (user) {
+    return <Navigate to="/admin" replace />;
+  }
   let toggleAuth = (e) => {
     e.preventDefault();
     // ajax 
-    // let login = { phone : phone, password : password };
-    // console.log(login);
     const formData = new FormData();
     formData.append('phone' , phone )
     formData.append('password' , password )
-    console.log(Object.fromEntries(formData));
+
     axios.post(`http://localhost:2000/api/v1/users/login` , formData , {headers: { 'content-type': 'multipart/form-data' }})
-      .then(response => console.log(response.data))
+      .then(response => {
+        // dispatch({ type : 'getToken' , payload : { dataToken : response.data.token} })
+        setUser(response.data.success)
+      })
       .catch(err => {
           if (err.response){
             window.alert(err.response.data.message)

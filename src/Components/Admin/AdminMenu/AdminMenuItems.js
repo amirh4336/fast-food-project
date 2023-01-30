@@ -13,7 +13,8 @@ import './ItemsFood.scss';
 import AdminDetailsFood from './AdminDetailsFood'
 
 export default function AdminMenuItems({ItemsFood}) {
-
+	
+	const {setShowEditForm , setShowForm , dispatch , setShowDeleteItem} = useContext(Context);
 	const {name , price , picture , detalis} = ItemsFood
 
 	let Detalis = [...detalis]
@@ -22,7 +23,6 @@ export default function AdminMenuItems({ItemsFood}) {
 	const [state, setState] = useState(false)
 	let rotate = e => setState(! state)
 
-	const {setShowEditForm , setShowForm , dispatch , setShowDeleteItem} = useContext(Context);
 
   let ToggleForm = () => {
 		dispatch({ type : 'DataForm' , payload : { Data : {...ItemsFood}} })
