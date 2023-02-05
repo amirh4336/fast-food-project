@@ -186,13 +186,13 @@ export default function Admin() {
 
         <div className={`main-content pt-[7.5rem]  ${showForm || showDeleteItem ? 'h-screen overflow-hidden': ''}`}>
           <SlideRoutes>
-            <Route path="/listApetizer" element={<AdminMenu page="listApetizer"  />} />
-            <Route path="/listDrink" element={<AdminMenu page="listDrinks"  />} />
-            <Route path="/listFried" element={<AdminMenu page="listFried"  />} />
-            <Route path="/listBurger" element={<AdminMenu page="listBurger"  />} />
-            <Route path="/listSandwich" element={<AdminMenu page="listSandwich"  />} />
-            <Route path="/listPizza/listPizzaAmerican" element={<AdminMenu page="listPizzaAmerican" Show={ShowSub}  />} />
-            <Route path="/" element={<AdminMenu page="listPizzaItaly" Show={ShowSub}  />} />
+            <Route path="/listApetizer" element={<AdminMenu page="listApetizer" category="63df4376982d8c2ab58cf9ce"  />} />
+            <Route path="/listDrink" element={<AdminMenu page="listDrinks" category="63df4348982d8c2ab58cf9c8"  />} />
+            <Route path="/listFried" element={<AdminMenu page="listFried" category="63df4354982d8c2ab58cf9cb"  />} />
+            <Route path="/listBurger" element={<AdminMenu page="listBurger" category="63dd215162a982f0fad9beb6"  />} />
+            <Route path="/listSandwich" element={<AdminMenu page="listSandwich"  category="63df4335982d8c2ab58cf9c5" />} />
+            <Route path="/listPizza/listPizzaAmerican" element={<AdminMenu page="listPizzaAmerican" Show={ShowSub} category="63dcdc6c6dcd796b259be4d7" subCategory="63dcdc806dcd796b259be4d9"  />} />
+            <Route path="/" element={<AdminMenu page="listPizzaItaly" Show={ShowSub} category="63dcdc6c6dcd796b259be4d7" subCategory="63dcdc806dcd796b259be4d9"  />} />
           </SlideRoutes>
         </div>
 

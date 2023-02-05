@@ -15,11 +15,16 @@ import AdminDetailsFood from './AdminDetailsFood'
 export default function AdminMenuItems({ItemsFood}) {
 	
 	const {setShowEditForm , setShowForm , dispatch , setShowDeleteItem} = useContext(Context);
-	const {name , price , picture , detalis} = ItemsFood
+	const {name , price , image , details} = ItemsFood
 
-	let Detalis = [...detalis]
+	// console.log(details);
+	// console.log(details.split('-'));
+
+	let Detalis = [...details]
 
 	let i = 0;
+
+
 	const [state, setState] = useState(false)
 	let rotate = e => setState(! state)
 
@@ -38,7 +43,7 @@ export default function AdminMenuItems({ItemsFood}) {
 				<div className={`card-header w-full relative transform-style h-[9rem] flex justify-center z-10 ${state ? 'flip' : 'reverse-flip'}`} onClick={rotate}>
 					
 					<div className="card-header-front absolute transform-style w-[95%] h-[14.5rem] bottom-[-1rem] backface dark:bg-[#fff] dark:text-[#052130] bg-[#052130] text-[#fff] rounded-[16px]">
-						<img className='w-full h-full rounded-[15px] translate-z-0' src={picture} alt={name}/>
+						<img className='w-full h-full rounded-[15px] translate-z-0' src={image} alt={name}/>
 						<div className="absolute bottom-4 right-4 text-[#fff] translate-z">
 							<BackIcon />
 						</div>

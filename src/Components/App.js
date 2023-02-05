@@ -13,7 +13,7 @@ import Login from './Admin/Auth/Login';
 
 export default function App() {
 
-  const [state , dispatch] = useReducer(AuthReducer  , {dataToken : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2RjZTY4ZGI0YmU2NDk5ZjRlMDBiOGQiLCJpYXQiOjE2NzU1NzU5MzEsImV4cCI6MTY3NTY2MjMzMX0.TzhV3ApdIn8NIL5dP03lAvVwxOOGmHJPYSxc1tEfcus"})
+  const [state , dispatch] = useReducer(AuthReducer  , {dataToken : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2RmYTEyNjFlOGE3NWZmYzU5YTVjYWMiLCJpbnZhbGlkYXRlX2JlZm9yZSI6bnVsbCwiaWF0IjoxNjc1NjAxNjY5LCJleHAiOjE2NzU2ODgwNjl9.bkX_3hP4aNTxe16l29SD3YZQ0CZ9DlEJEhI6wyNj3rs"})
   
   return(
     <AuthContext.Provider value={{dataToken : state.dataToken , dispatch }}>

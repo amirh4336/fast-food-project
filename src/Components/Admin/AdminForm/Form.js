@@ -78,6 +78,7 @@ export default function Form({showEditForm}) {
   const [detailFour, setDetailFour] = useState('')
   const [detailFive, setDetailFive] = useState('')
   const [detailSix, setDetailSix] = useState('')
+  let details = [detailOne ,detailTwo , detailThree , detailFour, detailFive , detailSix]
   let postProduct = (e) => {
     e.preventDefault();
     let categoryData = document.querySelector('input[name="items"]:checked').value;
@@ -86,7 +87,9 @@ export default function Form({showEditForm}) {
     const formData = new FormData();
     formData.append('name' , nameItem )
     formData.append('price' , pirceItem )
-    formData.append('details' , `${detailOne}-${detailTwo}-${detailThree}-${detailFour}-${detailFive}-${detailSix}` )
+    for (let index = 0; index < details.length; index++) {
+      details[index] === '' ? void(0) : formData.append('details' , details[index])
+    }
     formData.append('image' , pathImg)
     formData.append('category' , categoryData )
     if (ShowSub) {formData.append('subCategory' , subCategoryData )}
@@ -173,7 +176,7 @@ export default function Form({showEditForm}) {
             disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 
             focus:invalid:ring-pink-500 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
             peer" 
-            type="number" placeholder="قیمت غذا خود را وارد کنید" onChange={(e) => setPriceItem(e.target.value)} defaultValue={EditDataForm.price} required />
+            type="text" placeholder="قیمت غذا خود را وارد کنید" onChange={(e) => setPriceItem(e.target.value)} defaultValue={EditDataForm.price} required />
           </label>
           
           <label className="mb-4">
