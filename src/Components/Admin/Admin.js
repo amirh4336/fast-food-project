@@ -1,5 +1,5 @@
 // import { Navigate} from "react-router-dom";
-import React , {useReducer , useState} from 'react';
+import React , {useReducer , useState } from 'react';
 import { Route } from 'react-router-dom';
 import SlideRoutes from 'react-slide-routes';
 
@@ -75,6 +75,23 @@ export default function Admin() {
   // if (!user) {
   //   return <Navigate to="/login" replace />;
   // }
+
+  // const authContext = useContext(AuthContext);
+  // const res = useCallback(async () => {
+  //   const res2 = await axios.get("https://api.pizzafarahzad.ir/v1/products?category=" , {
+  //         headers: {
+  //           'Authorization' : `Bearer ${authContext.dataToken}`
+  //         }
+  //       })
+  //       console.log(res2.data.productsList);
+  //       return res2.data
+  // }, [])
+
+  // useEffect(() => {
+  //   res()
+
+
+  // }, []);
 
   const [showForm, setShowForm] = useState(false);
   const [showEditForm, setShowEditForm] = useState(false);

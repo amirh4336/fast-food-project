@@ -1,4 +1,4 @@
-export default function Reducer(state , action) {
+export default function AuthReducer(state , action) {
   switch (action.type) {
     case 'getToken':
       let { dataToken } = action.payload;

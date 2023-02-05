@@ -10,7 +10,8 @@ export default function Login() {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [user, setUser] = useState(false);
-  // const [dispatch] = useContext(AuthContext);
+  const authContext = useContext(AuthContext);
+
   if (user) {
     return <Navigate to="/admin" replace />;
   }
@@ -21,9 +22,9 @@ export default function Login() {
     formData.append('phone' , phone )
     formData.append('password' , password )
 
-    axios.post(`http://localhost:2000/api/v1/users/login` , formData , {headers: { 'content-type': 'multipart/form-data' }})
+    axios.post(`https://api.pizzafarahzad.ir/v1/users/login` , formData , {headers: { 'content-type': 'multipart/form-data' }})
       .then(response => {
-        // dispatch({ type : 'getToken' , payload : { dataToken : response.data.token} })
+        authContext.dispatch({ type : 'getToken' , payload : { dataToken : response.data.token} })
         setUser(response.data.success)
       })
       .catch(err => {

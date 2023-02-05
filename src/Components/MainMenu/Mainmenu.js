@@ -1,9 +1,10 @@
-import React , {useReducer , useState} from 'react';
+import React , {useReducer , useState } from 'react';
 import { Route } from 'react-router-dom';
 
 import SlideRoutes from 'react-slide-routes';
 // Context
 import Context from '../../Context/Context';
+
 // Reducers
 import Reducer from '../../Reducers/Reducer';
 
@@ -48,7 +49,7 @@ import saladKalamImg from '../../Assets/Images/foods-min/apetizer/salad-kalam-im
 import burgurSokhariImg from "../../Assets/Images/foods-min/fried/burgur-sokhari-img.jpg";
 import gharchSokhariImg from "../../Assets/Images/foods-min/fried/gharch-sokhari-img.jpg";
 import fileSokhariImg from "../../Assets/Images/foods-min/fried/file-sokhari-img.jpg";
-// import axios, { Axios } from 'axios';
+
 
 
 
@@ -60,20 +61,7 @@ function MainMenu() {
     document.documentElement.classList.remove('dark')
   }
 
-  // let res = async () => {
-  //   const res2 = await axios.get("http://localhost:2000/api/v1/products?category=" , {
-  //     headers: {
-  //       'Authorization' : `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2NmZWVjMDJmN2Q4MWJmMTczYzY1ZWIiLCJpYXQiOjE2NzQ1NzIyNzQsImV4cCI6MTY3NDY1ODY3NH0.S7Ag9ngQOJyOM9QeZYDqTJXBZrmUHQyWdUqy5Dc6B4s`
-  //     }
-  //   })
-  //   return res2.data
-  // } 
-  // useEffect(() => {
-  //   console.log(res());
-  //   // return () => {
-  //   //   cleanup
-  //   // };
-  // }, []);
+
 
  // list foods
   const [state , dispatch] = useReducer(Reducer , {
