@@ -6,6 +6,17 @@ export default function Reducer(state , action) {
         ...state ,
         EditData : Data
       }
+    case 'IdItem':
+      let { IdItem } = action.payload;
+      return {
+        ...state ,
+        IdItems : IdItem
+      }
+    case 'refresh':
+      return {
+        ...state ,
+        refresh : !state.refresh
+      }
     default:
       break;
   }

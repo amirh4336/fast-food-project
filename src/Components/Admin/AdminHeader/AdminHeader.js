@@ -3,11 +3,13 @@ import {useContext , useState} from 'react';
 // context
 import Context from '../../../Context/Context';
 
+
+
 // Component
 import AdminTab from './AdminTabsFoods/AdminTab';
 
 // Logo
-import {User , Settings , LogOut , Plus} from '../../../Assets/Logos/Logos';
+import {User , LogOut , Plus} from '../../../Assets/Logos/Logos';
 
 export default function AdminHeader({ShowSub , setShowSub}) {
   
@@ -18,6 +20,10 @@ export default function AdminHeader({ShowSub , setShowSub}) {
     setShowEditForm(false);
     setShowForm(true);
   }
+
+  let logOut = () => window.location.reload()
+
+
   
   return(
     <>
@@ -32,14 +38,14 @@ export default function AdminHeader({ShowSub , setShowSub}) {
         <div className="left-nav flex">
           <div className={`${show ? '' : 'hidden'} left-6 top-14  absolute p-4 bg-white w-32 shadow-2xl rounded-md`}>
             <ul>
-              <li>
+              {/* <li>
                 <button className="flex mb-3">
                   <span className="ml-1"><Settings /></span>
                   تنظیمات
                 </button>
-              </li>
+              </li> */}
               <li>
-                <button className="flex">
+                <button onClick={logOut} className="flex">
                   <span className="ml-1"><LogOut /></span>
                   خروج 
                 </button>

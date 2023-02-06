@@ -1,14 +1,13 @@
 
 
 
-export default function CheckBoxs({TabsFood , setShowSub , EditDataForm}) {
+export default function CheckBoxs({TabsFood , setShowSub , EditDataForm , categoryType}) {
 
   const {type , name , id } = TabsFood ;
-
   return(
     <label className="flex mr-2">
       { 
-        type === EditDataForm.type || EditDataForm.type === 'listPizzaItaly' || EditDataForm.type === 'listPizzaAmerican' 
+        type === EditDataForm?.category?.name || EditDataForm.type === 'listPizzaItaly' || EditDataForm.type === 'listPizzaAmerican' 
           ? <input type="radio" onClick={() => type === '' ? setShowSub(true) : setShowSub(false)} name="items" value={id} defaultChecked/>
           : <input type="radio" onClick={() => type === '' ? setShowSub(true) : setShowSub(false)} name="items" value={id} required/>
       }

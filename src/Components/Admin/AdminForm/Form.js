@@ -13,14 +13,14 @@ import {Close} from '../../../Assets/Logos/Logos';
 import axios from 'axios';
 
 export default function Form({showEditForm , setShowTostify}) {
-  const {setShowForm  ,EditData} = useContext(Context);
+  const {setShowForm  ,EditData , dispatch} = useContext(Context);
 
   const listTabFoods =  [
-    { id:'63df4376982d8c2ab58cf9ce' , type:'listApetizer' , name:"پیش غذا" },            
-    { id:'63df4348982d8c2ab58cf9c8' , type:'listDrinks' , name:"نوشیدنی" },
-    { id:'63df4335982d8c2ab58cf9c5' , type:'listSandwich' , name:"ساندویچ" },
-    { id:'63df4354982d8c2ab58cf9cb' , type:'listFried' , name:"سوخاری"  },
-    { id:'63dd215162a982f0fad9beb6' , type:'listBurger' , name:"برگر"   },
+    { id:'63df4376982d8c2ab58cf9ce' , type:'apetizer' , name:"پیش غذا" },            
+    { id:'63df4348982d8c2ab58cf9c8' , type:'drinks' , name:"نوشیدنی" },
+    { id:'63df4335982d8c2ab58cf9c5' , type:'sandwich' , name:"ساندویچ" },
+    { id:'63df4354982d8c2ab58cf9cb' , type:'fried' , name:"سوخاری"  },
+    { id:'63dd215162a982f0fad9beb6' , type:'burger' , name:"برگر"   },
     { id:'63dcdc6c6dcd796b259be4d7' , type:'' , name:"پیتزا" },
   ]; 
 
@@ -31,13 +31,14 @@ export default function Form({showEditForm , setShowTostify}) {
 
     EditDataForm = EditData
 
+
     listDetails = [
-      { id:1 , text: `${EditDataForm.detalis[0]}` },            
-      { id:2 , text: `${EditDataForm.detalis[1]}` },
-      { id:3 , text: `${EditDataForm.detalis[2]}` },
-      { id:4 , text: `${EditDataForm.detalis[3]}` },
-      { id:5 , text: `${EditDataForm.detalis[4]}` },
-      { id:6 , text: `${EditDataForm.detalis[5]}` },
+      { id:1 , text: `${EditDataForm.details[0]}` },            
+      { id:2 , text: `${EditDataForm.details[1]}` },
+      { id:3 , text: `${EditDataForm.details[2]}` },
+      { id:4 , text: `${EditDataForm.details[3]}` },
+      { id:5 , text: `${EditDataForm.details[4]}` },
+      { id:6 , text: `${EditDataForm.details[5]}` },
     ]
   }
 
@@ -80,7 +81,10 @@ export default function Form({showEditForm , setShowTostify}) {
 
     setShowTostify(
       axios.post(`https://api.pizzafarahzad.ir/v1/products` , formData , {headers: { 'content-type': 'multipart/form-data' , 'Authorization' : `Bearer ${authContext.dataToken}`}})
-        .then(response => response.data.success)
+        .then(response => {
+          dispatch({ type : 'refresh' })
+          return  response.data.success
+        })
         .catch(err => {
             if (err.response){
               window.alert(err.response.data.message)

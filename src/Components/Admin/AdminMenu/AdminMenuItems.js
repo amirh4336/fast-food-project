@@ -25,7 +25,7 @@ export default function AdminMenuItems({ItemsFood}) {
 
 
 	const [state, setState] = useState(false)
-	let rotate = e => setState(! state)
+	let rotate = e => setState(!state)
 
 
   let ToggleForm = () => {
@@ -33,8 +33,9 @@ export default function AdminMenuItems({ItemsFood}) {
     setShowEditForm(true);
     setShowForm(true);
   } 
-
+	
 	let deleteItem = () => {
+		dispatch({ type : 'IdItem' , payload : { IdItem : id} })
 		setShowDeleteItem(true)
 	}
 

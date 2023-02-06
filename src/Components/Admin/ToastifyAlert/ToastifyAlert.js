@@ -12,11 +12,27 @@ export default function ToastifyAlert({showTostify}){
       ? void(0)
       : toast.promise(
           showTostify,
-            {
-              pending: "صبر کنید",
-              success: `با موفقیت ثبت شد`,
-              error: 'نا موفق 🤯'
+          {
+            pending: {
+              render(){
+                return "صبر کنید"
+              },
+              icon: '⚪',
+            },
+            success: {
+              render({data}){
+                if (data) return 'محصول با موفقیت ثبت شد' 
+                return data
+              },
+              icon: '🟢',
+            },
+            error: {
+              render({data}){
+                return `نا موفق`
+              },
+              icon: '🔴',
             }
+          }
       )
     
   }, [showTostify]);
