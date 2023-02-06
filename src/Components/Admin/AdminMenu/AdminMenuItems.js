@@ -15,9 +15,8 @@ import AdminDetailsFood from './AdminDetailsFood'
 export default function AdminMenuItems({ItemsFood}) {
 	
 	const {setShowEditForm , setShowForm , dispatch , setShowDeleteItem} = useContext(Context);
-	const {name , price , image , details} = ItemsFood
+	const {name , price , image , details ,id} = ItemsFood
 
-	// console.log(details);
 	// console.log(details.split('-'));
 
 	let Detalis = [...details]
@@ -34,6 +33,10 @@ export default function AdminMenuItems({ItemsFood}) {
     setShowEditForm(true);
     setShowForm(true);
   } 
+
+	let deleteItem = () => {
+		setShowDeleteItem(true)
+	}
 
 
 	return(
@@ -77,7 +80,7 @@ export default function AdminMenuItems({ItemsFood}) {
 
 			</div>
 			<div className="footerForm grid grid-cols-2 w-full gap-6 mb-6 px-4">
-				<button type="button" title='Close' onClick={() => setShowDeleteItem(true)} className="bg-rose-500 text-white py-2 text-lg rounded-[4px] flex justify-center">
+				<button type="button" title='delete' onClick={deleteItem} className="bg-rose-500 text-white py-2 text-lg rounded-[4px] flex justify-center">
 					<span className="ml-1">
 						<Trash />
 					</span>

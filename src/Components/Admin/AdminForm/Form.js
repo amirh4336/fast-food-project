@@ -12,7 +12,7 @@ import {Close} from '../../../Assets/Logos/Logos';
 
 import axios from 'axios';
 
-export default function Form({showEditForm}) {
+export default function Form({showEditForm , setShowTostify}) {
   const {setShowForm  ,EditData} = useContext(Context);
 
   const listTabFoods =  [
@@ -52,23 +52,8 @@ export default function Form({showEditForm}) {
   let ToggleForm = () => setShowForm(false);
 
   const authContext = useContext(AuthContext);
-  // const res = useCallback(async () => {
-  //   const res2 = await axios.get("https://api.pizzafarahzad.ir/v1/products?category=" , {
-  //         headers: {
-  //           'Authorization' : `Bearer ${authContext.dataToken}`
-  //         }
-  //       })
-  //       console.log(res2.data.productsList);
-  //       return res2.data
-  // }, [authContext])
 
-  // useEffect(() => {
-  //   res()
-
-
-  // }, []);
-
-
+  // data forms
   const [nameItem, setNameItem] = useState('')
   const [pirceItem, setPriceItem] = useState('')
   const [pathImg, setPathImg] = useState('')
@@ -79,8 +64,7 @@ export default function Form({showEditForm}) {
   const [detailFive, setDetailFive] = useState('')
   const [detailSix, setDetailSix] = useState('')
   let details = [detailOne ,detailTwo , detailThree , detailFour, detailFive , detailSix]
-  let postProduct = (e) => {
-    e.preventDefault();
+  let sendData = () => {
     let categoryData = document.querySelector('input[name="items"]:checked').value;
     let subCategoryData = document.querySelector('input[name="subItems"]:checked')?.value;
     // ajax
@@ -94,30 +78,35 @@ export default function Form({showEditForm}) {
     formData.append('category' , categoryData )
     if (ShowSub) {formData.append('subCategory' , subCategoryData )}
 
-    axios.post(`https://api.pizzafarahzad.ir/v1/products` , formData , {headers: { 'content-type': 'multipart/form-data' , 'Authorization' : `Bearer ${authContext.dataToken}`}})
-      .then(response => {
-        // authContext.dispatch({ type : 'getToken' , payload : { dataToken : response.data.token} })
-        // setUser(response.data.success)
-        ToggleForm()
-        if (response.data.success) {
-          return ToggleForm()
-        }
-      })
-      .catch(err => {
-          if (err.response){
-            window.alert(err.response.data.message)
-          //do something
-          
-          }else if(err.request){
-          
-          //do something else
-          
-          }else if(err.message){
-          
-          //do something other than the other two
-          
-          }
-      })
+    setShowTostify(
+      axios.post(`https://api.pizzafarahzad.ir/v1/products` , formData , {headers: { 'content-type': 'multipart/form-data' , 'Authorization' : `Bearer ${authContext.dataToken}`}})
+        .then(response => response.data.success)
+        .catch(err => {
+            if (err.response){
+              window.alert(err.response.data.message)
+              return err.data.message
+            //do something
+            
+            }else if(err.request){
+              window.alert(err.request.data.message)
+              return err.data.message
+            //do something else
+            
+            }else if(err.message){
+              window.alert(err.message.data.message)
+              return err.data.message
+            //do something other than the other two
+            
+            }
+        })
+    )
+    
+  }
+
+  let postProduct = e => {
+    e.preventDefault();
+    sendData()
+    ToggleForm()
     
   }
 
