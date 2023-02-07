@@ -11,9 +11,9 @@ import DetalisFood from './DetalisFood'
 
 export default function ItemsFood({ItemsFood}) {
 
-    const {name , price , picture , detalis} = ItemsFood
-
-    let Detalis = [...detalis]
+    const {name , price , image , details} = ItemsFood
+    
+    let Detalis = [...details]
 
     let i = 0;
     const [state, setState] = useState(false)
@@ -24,7 +24,7 @@ export default function ItemsFood({ItemsFood}) {
             <div className={`card-header w-full relative transform-style h-[9rem] flex justify-center z-10 ${state ? 'flip' : 'reverse-flip'}`} onClick={rotate}>
                 
                 <div className="card-header-front absolute transform-style w-[95%] h-[14.5rem] bottom-[-1rem] backface dark:bg-[#F2F1EE] dark:text-[#052130] bg-[#052130] text-[#F2F1EE] rounded-[16px]">
-                    <img className='w-full h-full rounded-[15px] translate-z-0' src={picture} alt={name}/>
+                    <img className='w-full h-full rounded-[15px] translate-z-0' src={image} alt={name}/>
                     <div className="absolute bottom-4 right-4 text-[#F2F1EE] translate-z">
                         <BackIcon />
                     </div>

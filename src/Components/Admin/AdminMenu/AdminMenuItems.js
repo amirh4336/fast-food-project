@@ -17,7 +17,6 @@ export default function AdminMenuItems({ItemsFood}) {
 	const {setShowEditForm , setShowForm , dispatch , setShowDeleteItem} = useContext(Context);
 	const {name , price , image , details ,id} = ItemsFood
 
-	// console.log(details.split('-'));
 
 	let Detalis = [...details]
 

@@ -2,7 +2,7 @@ import {useContext , memo , useCallback , useEffect , useState} from 'react';
 
 // context
 import Context from '../../../Context/Context';
-import AuthContext from '../../../Context/AuthContext';
+
 // axios
 import axios from 'axios';
 
@@ -13,16 +13,11 @@ const List = ({Show , category , subCategory}) => {
 
     const [list, setList] = useState([]);
 
-    const authContext = useContext(AuthContext);
     const {refresh} = useContext(Context);
     const res = useCallback(async () => {
-        const res2 = await axios.get(`https://api.pizzafarahzad.ir/v1/products?${subCategory === undefined ? `category=${category}` : `subCategory=${subCategory}`}` , {
-        headers: {
-            'Authorization' : `Bearer ${authContext.dataToken}`
-        }
-        })
+        const res2 = await axios.get(`https://api.pizzafarahzad.ir/v1/products?${subCategory === undefined ? `category=${category}` : `subCategory=${subCategory}`}` )
         return setList(res2.data.productsList)
-    }, [authContext.dataToken , category , subCategory])
+    }, [category , subCategory])
 
     useEffect(() => {
         res()

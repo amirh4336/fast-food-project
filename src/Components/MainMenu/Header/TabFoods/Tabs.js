@@ -10,7 +10,7 @@ const TabFoods = ({Show , setShow , headerState}) => {
     const listTabFoods =  [
         // { id:1 , name:"پیتزا" , bg:"bg-pizza-image" , path:"/listPizza/listPizzaItaly" },
         { id:2 , name:"ساندویچ" , bg:"bg-sandwich-image" , path:"/listSandwich" },
-        { id:3 , name:"برگر" , bg:"bg-burger-image" , path:"/" },
+        { id:3 , name:"برگر" , bg:"bg-burger-image" , path:"/listBurger" },
         { id:4 , name:"سوخاری" , bg:"bg-fried-image" , path:"/listFried" },
         { id:5 , name:"نوشیدنی" , bg:"bg-drinks-image" , path:"/listDrink" },
         { id:6 , name:"پیش غذا" , bg:"bg-apetizer-image" , path:"/listApetizer" },            
@@ -23,7 +23,7 @@ const TabFoods = ({Show , setShow , headerState}) => {
                 
                 {/* pizza list */}
                 <div className="rounded-lg flex flex-col">
-                    <NavLink  to={{pathname: "/listPizza/listPizzaItaly"}} onClick={() => {setShow(true)}} className={({ isActive }) => {   
+                    <NavLink  to={{pathname: "/"}} onClick={() => {setShow(true)}} className={({ isActive }) => {   
                                                                                                     let className = 'rounded-lg border dark:border-slate-700 h-14 w-full flex justify-center items-center';    
                                                                                                     if (isActive || window.location.pathname === '/listPizza/listPizzaAmerican' ) {
                                                                                                         className += ' bg-[#052130] dark:bg-[#F2F1EE] '

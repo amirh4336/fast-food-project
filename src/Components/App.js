@@ -13,7 +13,7 @@ import Login from './Admin/Auth/Login';
 
 export default function App() {
 
-  const [state , dispatch] = useReducer(AuthReducer  , {dataToken : ""})
+  const [state , dispatch] = useReducer(AuthReducer  , {dataToken : document.cookie})
   
   return(
     <AuthContext.Provider value={{dataToken : state.dataToken , dispatch }}>

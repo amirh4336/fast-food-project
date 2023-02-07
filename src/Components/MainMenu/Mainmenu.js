@@ -140,15 +140,15 @@ function MainMenu() {
         dispatch
       }}>
         <Header Show={ShowSub} setShow={setShowSub} />
-        <SlideRoutes>
-          <Route path="/listApetizer" element={<Menu page="listApetizer" />} />
-          <Route path="/listDrink" element={<Menu page="listDrinks" />} />
-          <Route path="/listFried" element={<Menu page="listFried" />} />
-          <Route path="/" element={<Menu page="listBurger" />} />
-          <Route path="/listSandwich" element={<Menu page="listSandwich" />} />
-          <Route path="/listPizza/listPizzaAmerican" element={<Menu page="listPizzaAmerican" Show={ShowSub} />} />
-          <Route path="/listPizza/listPizzaItaly" element={<Menu page="listPizzaItaly" Show={ShowSub} />} />
-        </SlideRoutes>
+          <SlideRoutes>
+            <Route path="/listApetizer" element={<Menu page="listApetizer" category="63df4376982d8c2ab58cf9ce" />} />
+            <Route path="/listDrink" element={<Menu page="listDrinks"  category="63df4348982d8c2ab58cf9c8" />} />
+            <Route path="/listFried" element={<Menu page="listFried"  category="63df4354982d8c2ab58cf9cb" />} />
+            <Route path="/listBurger" element={<Menu page="listBurger" category="63dd215162a982f0fad9beb6" />} />
+            <Route path="/listSandwich" element={<Menu page="listSandwich"   category="63df4335982d8c2ab58cf9c5"/>} />
+            <Route path="/listPizza/listPizzaAmerican" element={<Menu page="listPizzaAmerican" Show={ShowSub} subCategory="63dcdc806dcd796b259be4d9"  />} />
+            <Route path="/" element={<Menu page="listPizzaItaly" Show={ShowSub} subCategory="63df6a43982d8c2ab58cf9ff"  />} />
+          </SlideRoutes>
         <Footer />
       </Context.Provider>
     </main>
