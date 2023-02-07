@@ -43,7 +43,7 @@ export default function Form({showEditForm , setShowTostify}) {
   }
 
   const [ShowSub, setShowSub] = useState(
-    EditDataForm.type === 'listPizzaItaly' || EditDataForm.type === 'listPizzaAmerican'
+    EditDataForm.subCategory?.name === 'Italy' || EditDataForm.subCategory?.name === 'American'
     ? true
     : false
   );
@@ -107,9 +107,57 @@ export default function Form({showEditForm , setShowTostify}) {
     
   }
 
+  let editData = () => {
+    let categoryData = document.querySelector('input[name="items"]:checked').value;
+    let subCategoryData = document.querySelector('input[name="subItems"]:checked')?.value;
+    // ajax
+    const formData = new FormData();
+    EditDataForm.name === nameItem ? void(0) : formData.append('name' , nameItem )
+    EditDataForm.price === pirceItem ? void(0) : formData.append('price' , pirceItem )
+    for (let index = 0; index < details.length; index++) {
+      details[index] === '' || details[index] === EditDataForm.details[index] 
+      ? void(0) : 
+      formData.append('details' , details[index])
+    }
+    pathImg === '' ? void(0) : formData.append('image' , pathImg)
+    categoryData === EditDataForm.category?.id
+    ? void(0)
+    : formData.append('category' , categoryData )
+    
+    ShowSub && EditDataForm.subCategory?.id !== subCategoryData
+    ? formData.append('subCategory' , subCategoryData )
+    : void(0)
+    setShowTostify(
+      axios.put(`https://api.pizzafarahzad.ir/v1/products/${EditDataForm.id}` , formData , {headers: { 'content-type': 'multipart/form-data' , 'Authorization' : `Bearer ${authContext.dataToken}`}})
+        .then(response => {
+          dispatch({ type : 'refresh' })
+          return  response.data.success
+        })
+        .catch(err => {
+            if (err.response){
+              window.alert(err.response.data.message)
+              return err.data.message
+            //do something
+            
+            }else if(err.request){
+              window.alert(err.request.data.message)
+              return err.data.message
+            //do something else
+            
+            }else if(err.message){
+              window.alert(err.message.data.message)
+              return err.data.message
+            //do something other than the other two
+            
+            }
+        })
+    )
+  
+  }
+
   let postProduct = e => {
     e.preventDefault();
-    sendData()
+    !showEditForm ? sendData() : editData()
     ToggleForm()
     
   }
@@ -131,8 +179,8 @@ export default function Form({showEditForm , setShowTostify}) {
             ShowSub
             ? <div className="border rounded-md my-4 flex p-3">
                 <label className="flex mr-2">
-                  {
-                    EditDataForm.type === 'listPizzaItaly'
+                  { 
+                    EditDataForm.subCategory?.name === 'Italy'
                     ? <input type="radio" name="subItems" value="63df6a43982d8c2ab58cf9ff" defaultChecked/>
                     : <input type="radio" name="subItems" value="63df6a43982d8c2ab58cf9ff" required/>
                   }
@@ -142,7 +190,7 @@ export default function Form({showEditForm , setShowTostify}) {
                 </label>
                 <label className="flex mr-2">
                   {
-                    EditDataForm.type === 'listPizzaAmerican'
+                    EditDataForm.subCategory?.name === 'American'
                     ? <input type="radio" name="subItems" value="63dcdc806dcd796b259be4d9" defaultChecked/>
                     : <input type="radio" name="subItems" value="63dcdc806dcd796b259be4d9" required/>
                   }
@@ -203,10 +251,17 @@ export default function Form({showEditForm , setShowTostify}) {
           <button type="button" title='Close' onClick={ToggleForm} className="bg-rose-500 text-white py-2 text-lg rounded-[4px]">
             لغو
           </button>
-
-          <button type="submit" className="bg-lime-600 text-white py-2 text-lg rounded-[4px]">
-            ثبت
-          </button>
+          
+          {
+            !showEditForm
+            ? <button type="submit" className="bg-lime-600 text-white py-2 text-lg rounded-[4px]">
+                ثبت
+              </button>
+            : <button type="submit" className="bg-blue-700 text-white py-2 text-lg rounded-[4px]">
+                ویرایش
+              </button>
+          }
+          
 
         </div>
       </form>

@@ -1,32 +1,31 @@
-import {memo , useCallback , useEffect , useState} from 'react';
+import {useContext , memo} from 'react';
 
-// axios
-import axios from 'axios';
+// context
+import Context from '../../../Context/Context';
+
 
 // Components
 import ItemsFood from "./ItemsFood";
 
-const List = ({Show , category , subCategory}) => {
+const List = ({page , Show}) => {
+    
+    const { listPizzaItaly , listPizzaAmerican , listBurger , listSandwich , listApetizer , listDrinks , listFried} = useContext(Context);
 
-    const [list, setList] = useState([]);
-
-    const res = useCallback(async () => {
-        const res2 = await axios.get(`https://api.pizzafarahzad.ir/v1/products?${subCategory === undefined ? `category=${category}` : `subCategory=${subCategory}`}` )
-        return setList(res2.data.productsList)
-    }, [category , subCategory])
-
-    useEffect(() => {
-        res()
-        
-    }, [res]);
-
-
-    console.log(list);
-
+    console.log(listBurger);
     return(
         <>
             <div className={`List bg-[#F2F1EE] text-[#052130] dark:bg-[#052130] dark:text-[#F2F1EE] px-6 py-10 grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4 mt-[10rem] transition-all ${Show ? 'pt-[5rem]' : ''}`}>
-                {list.map(ItemFood => <ItemsFood  key={ItemFood.id} ItemsFood={ItemFood}/>)}
+                {(() => {
+                    switch (page) {
+                    case "listSandwich":  return listSandwich.map(ItemFood => <ItemsFood  key={ItemFood.id} ItemsFood={ItemFood} />)
+                    case "listBurger":    return listBurger.map(ItemFood => <ItemsFood  key={ItemFood.id} ItemsFood={ItemFood} />)
+                    case "listApetizer":  return listApetizer.map(ItemFood => <ItemsFood  key={ItemFood.id} ItemsFood={ItemFood} />)
+                    case "listDrinks":    return listDrinks.map(ItemFood => <ItemsFood  key={ItemFood.id} ItemsFood={ItemFood} />)
+                    case "listFried":     return listFried.map(ItemFood => <ItemsFood  key={ItemFood.id} ItemsFood={ItemFood} />)
+                    case "listPizzaItaly":     return listPizzaItaly.map(ItemFood => <ItemsFood  key={ItemFood.id} ItemsFood={ItemFood} />)
+                    default:               return listPizzaAmerican.map(ItemFood => <ItemsFood  key={ItemFood.id} ItemsFood={ItemFood} />)
+                    }
+                })()}
             </div>
         </>
     )
