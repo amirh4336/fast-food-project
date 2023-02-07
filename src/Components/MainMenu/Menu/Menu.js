@@ -11,7 +11,6 @@ const List = ({page , Show}) => {
     
     const { listPizzaItaly , listPizzaAmerican , listBurger , listSandwich , listApetizer , listDrinks , listFried} = useContext(Context);
 
-    console.log(listBurger);
     return(
         <>
             <div className={`List bg-[#F2F1EE] text-[#052130] dark:bg-[#052130] dark:text-[#F2F1EE] px-6 py-10 grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4 mt-[10rem] transition-all ${Show ? 'pt-[5rem]' : ''}`}>

@@ -112,8 +112,8 @@ export default function Form({showEditForm , setShowTostify}) {
     let subCategoryData = document.querySelector('input[name="subItems"]:checked')?.value;
     // ajax
     const formData = new FormData();
-    EditDataForm.name === nameItem ? void(0) : formData.append('name' , nameItem )
-    EditDataForm.price === pirceItem ? void(0) : formData.append('price' , pirceItem )
+    nameItem === '' ? void(0) : formData.append('name' , nameItem )
+    pirceItem === '' ? void(0) : formData.append('price' , pirceItem )
     for (let index = 0; index < details.length; index++) {
       details[index] === '' || details[index] === EditDataForm.details[index] 
       ? void(0) : 

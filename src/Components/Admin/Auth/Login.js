@@ -25,7 +25,7 @@ export default function Login() {
 
     axios.post(`https://api.pizzafarahzad.ir/v1/users/login` , formData , {headers: { 'content-type': 'multipart/form-data' }})
       .then(response => {
-        authContext.dispatch({ type : 'getToken' , payload : { dataToken : response.data.token} })
+        authContext.dispatchAuth({ type : 'getToken' , payload : { dataToken : response.data.token} })
         document.cookie = `${response.data.token}`;
         setUser(response.data.success)
       })
