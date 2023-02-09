@@ -9,7 +9,7 @@ import CheckBoxs from './CheckBoxs';
 
 //Logo
 import {Close} from '../../../Assets/Logos/Logos';
-
+// axois
 import axios from 'axios';
 
 export default function Form({showEditForm , setShowTostify}) {
@@ -158,10 +158,19 @@ export default function Form({showEditForm , setShowTostify}) {
 
   let postProduct = e => {
     e.preventDefault();
-    !showEditForm ? sendData() : editData()
-    ToggleForm()
-    
+    selectedFile.size/1024 < 250 || pathImg === '' ? !showEditForm ? sendData() : editData() : void(0)
+    selectedFile.size/1024 < 250 || pathImg === '' ?  ToggleForm() : void(0)
   }
+  // sohw image size
+  const [selectedFile, setSelectedFile] = useState(0);
+
+  const handleFileChange = (event) => {
+    if(event.target.files.length > 0){
+      setSelectedFile(event.target.files[0]);
+    }
+    setPathImg(event.target.files[0])
+    
+  };
 
   return (
     <div className="w-full z-30 backdrop-blur-sm absolute top-0 px-4 sm:px-8 h-full flex justify-center items-center font-['Vazir']">
@@ -223,7 +232,8 @@ export default function Form({showEditForm , setShowTostify}) {
           
           <label className="mb-4">
             <p className="text-lg mb-2">عکس غذا</p>
-            <input type="file" onChange={(e) => setPathImg(e.target.files[0])} id="avatar" name="avatar" accept="image/png, image/jpeg" />
+            <input type="file" onChange={handleFileChange} id="avatar" name="avatar" accept="image/png, image/jpeg" />
+            {selectedFile.size/1024 > 250 ? <p className='text-red-600 mt-1'>حجم عکس شما بیشتر از 250kB است، لطفا حجم عکس را کم کنید.</p> : '' }
           </label>
 
           <label className="col-span-2 mb-2 flex " >
