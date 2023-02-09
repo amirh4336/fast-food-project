@@ -87,7 +87,7 @@ export default function AdminMenuItems({ItemsFood}) {
 					حذف
 				</button>
 
-				<button type="submit" onClick={ToggleForm} className="bg-sky-500 text-white py-2 text-lg rounded-[4px] flex justify-center">
+				<button type="submit" onClick={ToggleForm} className="bg-blue-600 text-white py-2 text-lg rounded-[4px] flex justify-center">
 					<span className="ml-1">
 						<EditPencil />
 					</span>

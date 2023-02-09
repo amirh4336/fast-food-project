@@ -25,8 +25,6 @@ const List = ({Show , category , subCategory}) => {
     }, [res , refresh]);
 
 
-    console.log(list);
-
     return(
         <>
             <div className={`List bg-[#ffff] text-[#052130] dark:bg-[#052130] dark:text-[#ffff] w-screen grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4 transition-all ${Show ? 'pt-[2.5rem]' : ''}`}>

@@ -36,7 +36,6 @@ function MainMenu() {
 
   const res = useCallback(async () => {
       const res2 = await axios.get(`https://api.pizzafarahzad.ir/v1/products` )
-      // setLists(res2.data.productsList)
       dispatch({ type : 'getList' , payload : {  
         burger : res2.data.productsList.filter(fiterBurger) ,
         italy : res2.data.productsList.filter(fiterItaly) ,

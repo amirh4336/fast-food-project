@@ -14,9 +14,9 @@ const Admin = React.lazy(() => import("./Admin/Admin"))
 const Login = React.lazy(() => import("./Admin/Auth/Login"))
 
 export default function App() {
+  const cookies = document.cookie.split(";");
 
-  const [stateAuth , dispatchAuth] = useReducer(AuthReducer  , {dataToken : document.cookie})
-  
+  const [stateAuth , dispatchAuth] = useReducer(AuthReducer  , {dataToken : cookies[0]})
    // list foods
   const [state , dispatch] = useReducer(Reducer , {
     listBurger : [],

@@ -129,7 +129,7 @@ export default function Form({showEditForm , setShowTostify}) {
     ShowSub && EditDataForm.subCategory?.id !== subCategoryData
     ? formData.append('subCategory' , subCategoryData )
     : void(0)
-    console.log([...formData])
+    
     // request for edit
     setShowTostify(
       axios.put(`https://api.pizzafarahzad.ir/v1/products/${EditDataForm.id}` , formData , {headers: { 'content-type': 'multipart/form-data' , 'Authorization' : `Bearer ${authContext.dataToken}`}})

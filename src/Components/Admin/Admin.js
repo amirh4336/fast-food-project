@@ -13,8 +13,6 @@ import AdminReducer from '../../Reducers/AdminReducer';
 
 // Components 
 import AdminHeader from './AdminHeader/AdminHeader';
-// import Form from './AdminForm/Form';
-// import AdminDeleteItem from './AdminDeleteItem/AdminDeleteItem';
 import AdminMenu from './AdminMenu/AdminMenu';
 import ToastifyAlert from './ToastifyAlert/ToastifyAlert';
 const Form = React.lazy(() => import("./AdminForm/Form"))
