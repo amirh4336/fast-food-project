@@ -78,7 +78,7 @@ export default function Form({showEditForm , setShowTostify}) {
     formData.append('image' , pathImg)
     formData.append('category' , categoryData )
     if (ShowSub) {formData.append('subCategory' , subCategoryData )}
-
+    // request for create
     setShowTostify(
       axios.post(`https://api.pizzafarahzad.ir/v1/products` , formData , {headers: { 'content-type': 'multipart/form-data' , 'Authorization' : `Bearer ${authContext.dataToken}`}})
         .then(response => {
@@ -127,6 +127,7 @@ export default function Form({showEditForm , setShowTostify}) {
     ShowSub && EditDataForm.subCategory?.id !== subCategoryData
     ? formData.append('subCategory' , subCategoryData )
     : void(0)
+    // request for edit
     setShowTostify(
       axios.put(`https://api.pizzafarahzad.ir/v1/products/${EditDataForm.id}` , formData , {headers: { 'content-type': 'multipart/form-data' , 'Authorization' : `Bearer ${authContext.dataToken}`}})
         .then(response => {

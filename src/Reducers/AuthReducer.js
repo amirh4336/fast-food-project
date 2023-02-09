@@ -6,6 +6,11 @@ export default function Reducer(state , action) {
         ...state ,
         dataToken : dataToken
       }
+    case 'deleteToken':
+      return {
+        ...state ,
+        dataToken : ""
+      }
     default:
       break;
   }

@@ -27,7 +27,7 @@ export default function App() {
     listDrinks : [],
     listFried : [],
   });
-
+  
   return(
     <AuthContext.Provider value={{dataToken : stateAuth.dataToken , dispatchAuth }}>
       <Context.Provider  value={{

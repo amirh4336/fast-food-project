@@ -2,7 +2,7 @@ import {useContext , useState} from 'react';
 
 // context
 import Context from '../../../Context/Context';
-
+import AuthContext from '../../../Context/AuthContext';
 
 
 // Component
@@ -14,14 +14,17 @@ import {User , LogOut , Plus} from '../../../Assets/Logos/Logos';
 export default function AdminHeader({ShowSub , setShowSub}) {
   
   const [show, setShow] = useState(false);
-
+  const authContext = useContext(AuthContext)
   const {setShowEditForm , setShowForm} = useContext(Context);
   let ToggleForm = () =>  {
     setShowEditForm(false);
     setShowForm(true);
   }
 
-  let logOut = () => window.location.reload()
+  function logOut() {
+    authContext.dispatchAuth({type : 'deleteToken'})
+  }
+
 
 
   
