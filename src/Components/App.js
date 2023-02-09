@@ -1,5 +1,5 @@
 import { BrowserRouter , Route , Routes} from 'react-router-dom';
-import {useReducer} from 'react';
+import React, {useReducer , Suspense} from 'react';
 
 // AuthContext
 import AuthContext from '../Context/AuthContext';
@@ -8,10 +8,10 @@ import Context from '../Context/Context';
 import AuthReducer from '../Reducers/AuthReducer';
 import Reducer from '../Reducers/Reducer';
 
-
+// Components
 import MainMenu from './MainMenu/Mainmenu';
-import Admin from './Admin/Admin';
-import Login from './Admin/Auth/Login';
+const Admin = React.lazy(() => import("./Admin/Admin"))
+const Login = React.lazy(() => import("./Admin/Auth/Login"))
 
 export default function App() {
 
@@ -43,8 +43,14 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route path="*" element={<MainMenu />} />
-            <Route path="/admin/*" element={<Admin />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/admin/*" element={
+              <Suspense fallback={<h2>لطفا صبر کنید...</h2>}>
+                <Admin />
+              </Suspense>}/>
+            <Route path="/login" element={
+              <Suspense fallback={<h2>لطفا صبر کنید...</h2>}>
+                <Login />
+              </Suspense>}/>
           </Routes>
         </BrowserRouter>
       </Context.Provider>

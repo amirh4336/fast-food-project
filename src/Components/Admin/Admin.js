@@ -1,5 +1,5 @@
 import { Navigate} from "react-router-dom";
-import React , {useReducer , useState , useContext } from 'react';
+import React , {useReducer , useState , useContext} from 'react';
 import { Route } from 'react-router-dom';
 import SlideRoutes from 'react-slide-routes';
 
@@ -13,11 +13,12 @@ import AdminReducer from '../../Reducers/AdminReducer';
 
 // Components 
 import AdminHeader from './AdminHeader/AdminHeader';
-import AddItems from './AdminForm/Form';
-import AdminDeleteItem from './AdminDeleteItem/AdminDeleteItem';
+// import Form from './AdminForm/Form';
+// import AdminDeleteItem from './AdminDeleteItem/AdminDeleteItem';
 import AdminMenu from './AdminMenu/AdminMenu';
 import ToastifyAlert from './ToastifyAlert/ToastifyAlert';
-
+const Form = React.lazy(() => import("./AdminForm/Form"))
+const AdminDeleteItem = React.lazy(() => import("./AdminDeleteItem/AdminDeleteItem"))
 
 
 
@@ -76,9 +77,9 @@ export default function Admin() {
           </SlideRoutes>
         </div>
 
-        { showForm ? <AddItems showEditForm={showEditForm} setShowTostify={setShowTostify} /> : '' }
+        { showForm && <Form showEditForm={showEditForm} setShowTostify={setShowTostify} /> }
 
-        { showDeleteItem ? <AdminDeleteItem setShowTostify={setShowTostify} /> : '' }
+        { showDeleteItem && <AdminDeleteItem setShowTostify={setShowTostify} /> }
 
         <ToastifyAlert  showTostify={showTostify}/>
         
