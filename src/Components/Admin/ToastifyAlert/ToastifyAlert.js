@@ -17,20 +17,23 @@ export default function ToastifyAlert({showTostify}){
               render(){
                 return "صبر کنید"
               },
-              icon: '⚪',
+              icon: '⏰',
             },
             success: {
               render({data}){
-                if (data) return 'محصول با موفقیت ثبت شد' 
-                return data
+                if (data === undefined) {
+                  return 'محصول با موفقیت ثبت شد' 
+                } else {
+                  return `${data}`
+                }
               },
-              icon: '🟢',
+              icon: '✅',
             },
             error: {
               render({data}){
                 return `نا موفق`
               },
-              icon: '🔴',
+              icon: '❌',
             }
           }
       )

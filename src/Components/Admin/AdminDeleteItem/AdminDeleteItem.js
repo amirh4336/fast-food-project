@@ -13,6 +13,7 @@ export default function AdminDeleteItem({setShowTostify}) {
 	const authContext = useContext(AuthContext);
 	let deleteItems = () => {
 		setShowDeleteItem(false)
+    // request to server
 		setShowTostify(
       axios.delete(`https://api.pizzafarahzad.ir/v1/products/${IdItems}` , {headers: { 'content-type': 'multipart/form-data' , 'Authorization' : `Bearer ${authContext.dataToken}`}})
         .then(response => {

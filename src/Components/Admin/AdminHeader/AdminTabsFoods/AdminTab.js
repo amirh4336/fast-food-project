@@ -8,7 +8,6 @@ import AdminSubTab from './AdminSubTab';
 const AdminTab = ({Show , setShow }) => {
 
     const listTabFoods =  [
-        // { id:1 , name:"پیتزا" , bg:"bg-pizza-image" , path:"/listPizza/listPizzaItaly" },
         { id:2 , name:"ساندویچ", path:"/admin/listSandwich" },
         { id:3 , name:"برگر"   , path:"/admin/listBurger" },
         { id:4 , name:"سوخاری" , path:"/admin/listFried" },

@@ -83,7 +83,7 @@ export default function Form({showEditForm , setShowTostify}) {
       axios.post(`https://api.pizzafarahzad.ir/v1/products` , formData , {headers: { 'content-type': 'multipart/form-data' , 'Authorization' : `Bearer ${authContext.dataToken}`}})
         .then(response => {
           dispatch({ type : 'refresh' })
-          return  response.data.success
+          return  response.data.message
         })
         .catch(err => {
             if (err.response){
@@ -132,7 +132,7 @@ export default function Form({showEditForm , setShowTostify}) {
       axios.put(`https://api.pizzafarahzad.ir/v1/products/${EditDataForm.id}` , formData , {headers: { 'content-type': 'multipart/form-data' , 'Authorization' : `Bearer ${authContext.dataToken}`}})
         .then(response => {
           dispatch({ type : 'refresh' })
-          return  response.data.success
+          return  response.data.message
         })
         .catch(err => {
             if (err.response){
@@ -161,7 +161,7 @@ export default function Form({showEditForm , setShowTostify}) {
     selectedFile.size/1024 < 250 || pathImg === '' ? !showEditForm ? sendData() : editData() : void(0)
     selectedFile.size/1024 < 250 || pathImg === '' ?  ToggleForm() : void(0)
   }
-  // sohw image size
+  // show image size
   const [selectedFile, setSelectedFile] = useState(0);
 
   const handleFileChange = (event) => {
