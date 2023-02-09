@@ -123,7 +123,6 @@ export default function Form({showEditForm , setShowTostify}) {
     categoryData === EditDataForm.category?.id
     ? void(0)
     : formData.append('category' , categoryData )
-    
     ShowSub && EditDataForm.subCategory?.id !== subCategoryData
     ? formData.append('subCategory' , subCategoryData )
     : void(0)

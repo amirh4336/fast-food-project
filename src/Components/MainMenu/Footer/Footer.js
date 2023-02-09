@@ -5,7 +5,7 @@ import { Phone , Instagram } from '../../../Assets/Logos/Logos.js';
 
 
 export default memo(function Footer() {
-    console.log('footer');
+
     return(
         <div className="Footer bg-[#F2F1EE] text-[#052130] dark:bg-[#052130] dark:text-[#F2F1EE] border-t-[1px] dark:border-slate-700 py-4 px-8 text-center">
             <h3 className="text-2xl">ارتباط با ما</h3>

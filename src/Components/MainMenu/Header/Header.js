@@ -9,8 +9,6 @@ export default function Header({Show, setShow}) {
   
   // movment for header
   const headerState = useToggleHeader();
-  
-  console.log('header');
 
   return(
     <>
