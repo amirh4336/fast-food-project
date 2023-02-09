@@ -65,6 +65,8 @@ export default function Form({showEditForm , setShowTostify}) {
   const [detailFive, setDetailFive] = useState(showEditForm & listDetails[4].text !== 'undefined' ? listDetails[4].text :'')
   const [detailSix, setDetailSix] = useState(showEditForm & listDetails[5].text !== 'undefined' ? listDetails[5].text :'')
   let details = [detailOne ,detailTwo , detailThree , detailFour, detailFive , detailSix]
+  
+  // create product
   let sendData = () => {
     let categoryData = document.querySelector('input[name="items"]:checked').value;
     let subCategoryData = document.querySelector('input[name="subItems"]:checked')?.value;
@@ -107,6 +109,7 @@ export default function Form({showEditForm , setShowTostify}) {
     
   }
 
+  // edit product
   let editData = () => {
     let categoryData = document.querySelector('input[name="items"]:checked').value;
     let subCategoryData = document.querySelector('input[name="subItems"]:checked')?.value;
@@ -114,10 +117,9 @@ export default function Form({showEditForm , setShowTostify}) {
     const formData = new FormData();
     nameItem === '' ? void(0) : formData.append('name' , nameItem )
     pirceItem === '' ? void(0) : formData.append('price' , pirceItem )
-    console.log(details);
     for (let index = 0; index < details.length; index++) {
       details[index] === '' 
-      ? void(0) 
+      ? formData.append('details' , []) 
       : formData.append('details' , details[index])
     }
     pathImg === '' ? void(0) : formData.append('image' , pathImg)
@@ -127,6 +129,7 @@ export default function Form({showEditForm , setShowTostify}) {
     ShowSub && EditDataForm.subCategory?.id !== subCategoryData
     ? formData.append('subCategory' , subCategoryData )
     : void(0)
+    console.log([...formData])
     // request for edit
     setShowTostify(
       axios.put(`https://api.pizzafarahzad.ir/v1/products/${EditDataForm.id}` , formData , {headers: { 'content-type': 'multipart/form-data' , 'Authorization' : `Bearer ${authContext.dataToken}`}})
