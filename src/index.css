@@ -5,28 +5,28 @@
 
 
 @font-face {
-    font-family: Vazir;
-    src: url('./Assets/Fonts/Vazir-Regular.eot');
-    src: url('./Assets/Fonts/Vazir-Regular.eot?#iefix') format('embedded-opentype'),
-         url('./Assets/Fonts/Vazir-Regular.woff2') format('woff2'),
-         url('./Assets/Fonts/Vazir-Regular.woff') format('woff'),
-         url('./Assets/Fonts/Vazir-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-display:swap;
-  }
+     font-family: Vazir;
+     src: url('./Assets/Fonts/Vazir-Regular.eot');
+     src: url('./Assets/Fonts/Vazir-Regular.eot?#iefix') format('embedded-opentype'),
+          url('./Assets/Fonts/Vazir-Regular.woff2') format('woff2'),
+          url('./Assets/Fonts/Vazir-Regular.woff') format('woff'),
+          url('./Assets/Fonts/Vazir-Regular.ttf') format('truetype');
+     font-weight: normal;
+     font-display:swap;
+}
+
+@font-face {
+     font-family: Vazir;
+     src: url('./Assets/Fonts/Vazir-Bold.eot');
+     src: url('./Assets/Fonts/Vazir-Bold.eot?#iefix') format('embedded-opentype'),
+          url('./Assets/Fonts/Vazir-Bold.woff2') format('woff2'),
+          url('./Assets/Fonts/Vazir-Bold.woff') format('woff'),
+          url('./Assets/Fonts/Vazir-Bold.ttf') format('truetype');
+     font-weight: bold;
+     font-display:swap;
+}
   
-  @font-face {
-    font-family: Vazir;
-    src: url('./Assets/Fonts/Vazir-Bold.eot');
-    src: url('./Assets/Fonts/Vazir-Bold.eot?#iefix') format('embedded-opentype'),
-         url('./Assets/Fonts/Vazir-Bold.woff2') format('woff2'),
-         url('./Assets/Fonts/Vazir-Bold.woff') format('woff'),
-         url('./Assets/Fonts/Vazir-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-display:swap;
-  }
-  
-  @font-face {
+  /* @font-face {
     font-family: Vazir;
     src: url('./Assets/Fonts/Vazir-Thin.eot');
     src: url('./Assets/Fonts/Vazir-Thin.eot?#iefix') format('embedded-opentype'),
@@ -68,4 +68,4 @@
          url('./Assets/Fonts/Vazir-Black.ttf') format('truetype');
     font-weight: 900;
     font-display:swap;
-  }
+  } */

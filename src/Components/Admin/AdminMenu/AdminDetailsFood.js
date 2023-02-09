@@ -3,7 +3,7 @@ import {Check} from '../../../Assets/Logos/Logos'
 
 
 export default function AdminDetalisFood({Detalis}) {
-  console.log(Detalis);
+
   return(
     Detalis === '' 
     ? ''
