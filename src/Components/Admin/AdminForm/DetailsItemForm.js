@@ -3,7 +3,6 @@
 export default function DetailsItemForm({details , setDetails}) {
   const {detailOne, detailTwo , detailThree , detailFour , detailFive , detailSix} = setDetails
 
-
   let postDetails = (e) => {
     e.preventDefault();
     switch (details.id) {

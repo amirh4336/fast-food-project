@@ -39,7 +39,7 @@ export default function Form({showEditForm , setShowTostify}) {
       { id:4 , text: `${EditDataForm.details[3]}` },
       { id:5 , text: `${EditDataForm.details[4]}` },
       { id:6 , text: `${EditDataForm.details[5]}` },
-    ]
+    ];
   }
 
   const [ShowSub, setShowSub] = useState(
@@ -58,12 +58,12 @@ export default function Form({showEditForm , setShowTostify}) {
   const [nameItem, setNameItem] = useState('')
   const [pirceItem, setPriceItem] = useState('')
   const [pathImg, setPathImg] = useState('')
-  const [detailOne, setDetailOne] = useState('')
-  const [detailTwo, setDetailTwo] = useState('')
-  const [detailThree, setDetailThree] = useState('')
-  const [detailFour, setDetailFour] = useState('')
-  const [detailFive, setDetailFive] = useState('')
-  const [detailSix, setDetailSix] = useState('')
+  const [detailOne, setDetailOne] = useState(showEditForm & listDetails[0].text !== 'undefined' ? listDetails[0].text :'')
+  const [detailTwo, setDetailTwo] = useState(showEditForm & listDetails[1].text !== 'undefined' ? listDetails[1].text :'')
+  const [detailThree, setDetailThree] = useState(showEditForm & listDetails[2].text !== 'undefined' ? listDetails[2].text :'')
+  const [detailFour, setDetailFour] = useState(showEditForm & listDetails[3].text !== 'undefined' ? listDetails[3].text :'')
+  const [detailFive, setDetailFive] = useState(showEditForm & listDetails[4].text !== 'undefined' ? listDetails[4].text :'')
+  const [detailSix, setDetailSix] = useState(showEditForm & listDetails[5].text !== 'undefined' ? listDetails[5].text :'')
   let details = [detailOne ,detailTwo , detailThree , detailFour, detailFive , detailSix]
   let sendData = () => {
     let categoryData = document.querySelector('input[name="items"]:checked').value;
@@ -114,10 +114,11 @@ export default function Form({showEditForm , setShowTostify}) {
     const formData = new FormData();
     nameItem === '' ? void(0) : formData.append('name' , nameItem )
     pirceItem === '' ? void(0) : formData.append('price' , pirceItem )
+    console.log(details);
     for (let index = 0; index < details.length; index++) {
-      details[index] === '' || details[index] === EditDataForm.details[index] 
-      ? void(0) : 
-      formData.append('details' , details[index])
+      details[index] === '' 
+      ? void(0) 
+      : formData.append('details' , details[index])
     }
     pathImg === '' ? void(0) : formData.append('image' , pathImg)
     categoryData === EditDataForm.category?.id
